@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 384,
+    "name": "Camel Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:18.147Z",
+  "listings": [
+    {
+      "price": 75000,
+      "amount": 60
+    },
+    {
+      "price": 77000,
+      "amount": 18
+    },
+    {
+      "price": 77000,
+      "amount": 28
+    },
+    {
+      "price": 77000,
+      "amount": 57
+    },
+    {
+      "price": 77500,
+      "amount": 3
+    },
+    {
+      "price": 77998,
+      "amount": 25
+    },
+    {
+      "price": 78000,
+      "amount": 44
+    },
+    {
+      "price": 78750,
+      "amount": 5
+    },
+    {
+      "price": 78888,
+      "amount": 8
+    },
+    {
+      "price": 78999,
+      "amount": 27
+    },
+    {
+      "price": 79000,
+      "amount": 1
+    },
+    {
+      "price": 79000,
+      "amount": 32
+    },
+    {
+      "price": 79500,
+      "amount": 6
+    },
+    {
+      "price": 79775,
+      "amount": 23
+    },
+    {
+      "price": 79795,
+      "amount": 15
+    },
+    {
+      "price": 79800,
+      "amount": 1
+    },
+    {
+      "price": 79950,
+      "amount": 1264
+    },
+    {
+      "price": 79980,
+      "amount": 60
+    },
+    {
+      "price": 79999,
+      "amount": 64
+    },
+    {
+      "price": 79999,
+      "amount": 18
+    },
+    {
+      "price": 79999,
+      "amount": 50
+    },
+    {
+      "price": 79999,
+      "amount": 17
+    },
+    {
+      "price": 80000,
+      "amount": 8
+    },
+    {
+      "price": 80000,
+      "amount": 132
+    },
+    {
+      "price": 80000,
+      "amount": 673
+    },
+    {
+      "price": 80000,
+      "amount": 18
+    },
+    {
+      "price": 80000,
+      "amount": 26
+    },
+    {
+      "price": 80000,
+      "amount": 174
+    },
+    {
+      "price": 80000,
+      "amount": 88
+    },
+    {
+      "price": 80000,
+      "amount": 14
+    },
+    {
+      "price": 83898,
+      "amount": 50
+    },
+    {
+      "price": 85000,
+      "amount": 15
+    },
+    {
+      "price": 87000,
+      "amount": 200
+    },
+    {
+      "price": 87000,
+      "amount": 18
+    },
+    {
+      "price": 88000,
+      "amount": 101
+    },
+    {
+      "price": 88000,
+      "amount": 42
+    },
+    {
+      "price": 88288,
+      "amount": 8
+    },
+    {
+      "price": 88999,
+      "amount": 133
+    },
+    {
+      "price": 89998,
+      "amount": 7490
+    },
+    {
+      "price": 90000,
+      "amount": 12
+    },
+    {
+      "price": 90000,
+      "amount": 10
+    },
+    {
+      "price": 90999,
+      "amount": 1
+    },
+    {
+      "price": 91000,
+      "amount": 1
+    },
+    {
+      "price": 92987,
+      "amount": 56
+    },
+    {
+      "price": 93333,
+      "amount": 29
+    },
+    {
+      "price": 93899,
+      "amount": 15
+    },
+    {
+      "price": 94849,
+      "amount": 26
+    },
+    {
+      "price": 94899,
+      "amount": 121
+    },
+    {
+      "price": 94990,
+      "amount": 2
+    },
+    {
+      "price": 95000,
+      "amount": 75
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 74999,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 76999,
+      "note": "cluster of 6"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 74999,
+      "note": "cluster of 8"
+    }
+  ]
+}

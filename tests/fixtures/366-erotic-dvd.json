@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 366,
+    "name": "Erotic DVD"
+  },
+  "fetchedAt": "2026-11-12T21:54:29.745Z",
+  "listings": [
+    {
+      "price": 4100000,
+      "amount": 8
+    },
+    {
+      "price": 4100415,
+      "amount": 1
+    },
+    {
+      "price": 4100420,
+      "amount": 215
+    },
+    {
+      "price": 4107998,
+      "amount": 6
+    },
+    {
+      "price": 4109985,
+      "amount": 3
+    },
+    {
+      "price": 4109990,
+      "amount": 26
+    },
+    {
+      "price": 4114000,
+      "amount": 17
+    },
+    {
+      "price": 4115400,
+      "amount": 4
+    },
+    {
+      "price": 4120000,
+      "amount": 2
+    },
+    {
+      "price": 4123456,
+      "amount": 7
+    },
+    {
+      "price": 4123794,
+      "amount": 22
+    },
+    {
+      "price": 4123795,
+      "amount": 1
+    },
+    {
+      "price": 4123795,
+      "amount": 1
+    },
+    {
+      "price": 4123824,
+      "amount": 29
+    },
+    {
+      "price": 4123825,
+      "amount": 37
+    },
+    {
+      "price": 4124990,
+      "amount": 1
+    },
+    {
+      "price": 4190000,
+      "amount": 1
+    },
+    {
+      "price": 4195000,
+      "amount": 32
+    },
+    {
+      "price": 4195000,
+      "amount": 11
+    },
+    {
+      "price": 4199198,
+      "amount": 2
+    },
+    {
+      "price": 4199998,
+      "amount": 2
+    },
+    {
+      "price": 4199999,
+      "amount": 5
+    },
+    {
+      "price": 4199999,
+      "amount": 1
+    },
+    {
+      "price": 4199999,
+      "amount": 3
+    },
+    {
+      "price": 4200000,
+      "amount": 1
+    },
+    {
+      "price": 4200000,
+      "amount": 1
+    },
+    {
+      "price": 4200000,
+      "amount": 6
+    },
+    {
+      "price": 4200000,
+      "amount": 1
+    },
+    {
+      "price": 4200000,
+      "amount": 14
+    },
+    {
+      "price": 4200000,
+      "amount": 1
+    },
+    {
+      "price": 4200000,
+      "amount": 3
+    },
+    {
+      "price": 4200000,
+      "amount": 3
+    },
+    {
+      "price": 4200000,
+      "amount": 119
+    },
+    {
+      "price": 4200000,
+      "amount": 1
+    },
+    {
+      "price": 4200000,
+      "amount": 7
+    },
+    {
+      "price": 4220000,
+      "amount": 1
+    },
+    {
+      "price": 4250000,
+      "amount": 9
+    },
+    {
+      "price": 4250000,
+      "amount": 1
+    },
+    {
+      "price": 4250000,
+      "amount": 7
+    },
+    {
+      "price": 4250000,
+      "amount": 1
+    },
+    {
+      "price": 4297000,
+      "amount": 3
+    },
+    {
+      "price": 4297900,
+      "amount": 2
+    },
+    {
+      "price": 4299999,
+      "amount": 4
+    },
+    {
+      "price": 4299999,
+      "amount": 2
+    },
+    {
+      "price": 4300000,
+      "amount": 15
+    },
+    {
+      "price": 4300000,
+      "amount": 2
+    },
+    {
+      "price": 4300000,
+      "amount": 3
+    },
+    {
+      "price": 4300000,
+      "amount": 1
+    },
+    {
+      "price": 4300000,
+      "amount": 1
+    },
+    {
+      "price": 4300000,
+      "amount": 4
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4099999,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4099999,
+      "note": "cluster of 16"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 4099999,
+      "note": "cluster of 50"
+    }
+  ]
+}

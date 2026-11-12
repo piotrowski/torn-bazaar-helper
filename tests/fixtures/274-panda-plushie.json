@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 274,
+    "name": "Panda Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:51:14.108Z",
+  "listings": [
+    {
+      "price": 54950,
+      "amount": 15
+    },
+    {
+      "price": 54985,
+      "amount": 1
+    },
+    {
+      "price": 54990,
+      "amount": 150
+    },
+    {
+      "price": 54995,
+      "amount": 23
+    },
+    {
+      "price": 54995,
+      "amount": 24
+    },
+    {
+      "price": 55000,
+      "amount": 10
+    },
+    {
+      "price": 55000,
+      "amount": 11
+    },
+    {
+      "price": 55799,
+      "amount": 86
+    },
+    {
+      "price": 55800,
+      "amount": 20
+    },
+    {
+      "price": 55988,
+      "amount": 149
+    },
+    {
+      "price": 55989,
+      "amount": 140
+    },
+    {
+      "price": 55990,
+      "amount": 14
+    },
+    {
+      "price": 55990,
+      "amount": 18
+    },
+    {
+      "price": 55994,
+      "amount": 17
+    },
+    {
+      "price": 56600,
+      "amount": 50
+    },
+    {
+      "price": 56634,
+      "amount": 3
+    },
+    {
+      "price": 56634,
+      "amount": 17
+    },
+    {
+      "price": 56634,
+      "amount": 23
+    },
+    {
+      "price": 56634,
+      "amount": 20
+    },
+    {
+      "price": 56634,
+      "amount": 32
+    },
+    {
+      "price": 56639,
+      "amount": 23
+    },
+    {
+      "price": 56694,
+      "amount": 28
+    },
+    {
+      "price": 56694,
+      "amount": 15
+    },
+    {
+      "price": 56700,
+      "amount": 10
+    },
+    {
+      "price": 56700,
+      "amount": 11
+    },
+    {
+      "price": 56800,
+      "amount": 25
+    },
+    {
+      "price": 56800,
+      "amount": 17
+    },
+    {
+      "price": 56990,
+      "amount": 1
+    },
+    {
+      "price": 56999,
+      "amount": 84
+    },
+    {
+      "price": 56999,
+      "amount": 20
+    },
+    {
+      "price": 57000,
+      "amount": 13
+    },
+    {
+      "price": 57000,
+      "amount": 18
+    },
+    {
+      "price": 57200,
+      "amount": 17
+    },
+    {
+      "price": 57399,
+      "amount": 9
+    },
+    {
+      "price": 57500,
+      "amount": 25
+    },
+    {
+      "price": 57600,
+      "amount": 18
+    },
+    {
+      "price": 57700,
+      "amount": 19
+    },
+    {
+      "price": 57890,
+      "amount": 13
+    },
+    {
+      "price": 57949,
+      "amount": 1
+    },
+    {
+      "price": 57998,
+      "amount": 1
+    },
+    {
+      "price": 57998,
+      "amount": 25
+    },
+    {
+      "price": 57999,
+      "amount": 15
+    },
+    {
+      "price": 58000,
+      "amount": 10
+    },
+    {
+      "price": 58669,
+      "amount": 15
+    },
+    {
+      "price": 59000,
+      "amount": 17
+    },
+    {
+      "price": 59599,
+      "amount": 2
+    },
+    {
+      "price": 59780,
+      "amount": 14
+    },
+    {
+      "price": 59995,
+      "amount": 5
+    },
+    {
+      "price": 59999,
+      "amount": 100
+    },
+    {
+      "price": 60000,
+      "amount": 1
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 54949,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 54949,
+      "note": "cluster of 14"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 54949,
+      "note": "cluster of 36"
+    }
+  ]
+}

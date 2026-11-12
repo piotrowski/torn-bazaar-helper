@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 282,
+    "name": "African Violet"
+  },
+  "fetchedAt": "2026-11-12T21:54:24.694Z",
+  "listings": [
+    {
+      "price": 62400,
+      "amount": 8
+    },
+    {
+      "price": 62500,
+      "amount": 4
+    },
+    {
+      "price": 62700,
+      "amount": 9
+    },
+    {
+      "price": 62790,
+      "amount": 12
+    },
+    {
+      "price": 62790,
+      "amount": 22
+    },
+    {
+      "price": 62795,
+      "amount": 15
+    },
+    {
+      "price": 62800,
+      "amount": 1456
+    },
+    {
+      "price": 62800,
+      "amount": 22
+    },
+    {
+      "price": 62860,
+      "amount": 1
+    },
+    {
+      "price": 62899,
+      "amount": 10
+    },
+    {
+      "price": 62990,
+      "amount": 10
+    },
+    {
+      "price": 62990,
+      "amount": 1
+    },
+    {
+      "price": 63000,
+      "amount": 18
+    },
+    {
+      "price": 63000,
+      "amount": 40
+    },
+    {
+      "price": 63636,
+      "amount": 42
+    },
+    {
+      "price": 63895,
+      "amount": 28
+    },
+    {
+      "price": 63995,
+      "amount": 25
+    },
+    {
+      "price": 63998,
+      "amount": 127
+    },
+    {
+      "price": 64000,
+      "amount": 4
+    },
+    {
+      "price": 64000,
+      "amount": 195
+    },
+    {
+      "price": 64000,
+      "amount": 28
+    },
+    {
+      "price": 64995,
+      "amount": 78
+    },
+    {
+      "price": 64997,
+      "amount": 4257
+    },
+    {
+      "price": 64997,
+      "amount": 1
+    },
+    {
+      "price": 65000,
+      "amount": 10
+    },
+    {
+      "price": 65000,
+      "amount": 135
+    },
+    {
+      "price": 65000,
+      "amount": 13
+    },
+    {
+      "price": 65000,
+      "amount": 30
+    },
+    {
+      "price": 65000,
+      "amount": 26
+    },
+    {
+      "price": 65000,
+      "amount": 66
+    },
+    {
+      "price": 65500,
+      "amount": 36
+    },
+    {
+      "price": 65555,
+      "amount": 2
+    },
+    {
+      "price": 65695,
+      "amount": 1
+    },
+    {
+      "price": 65999,
+      "amount": 12
+    },
+    {
+      "price": 66000,
+      "amount": 14
+    },
+    {
+      "price": 66000,
+      "amount": 17
+    },
+    {
+      "price": 66666,
+      "amount": 96
+    },
+    {
+      "price": 67000,
+      "amount": 40
+    },
+    {
+      "price": 68000,
+      "amount": 72
+    },
+    {
+      "price": 68400,
+      "amount": 5
+    },
+    {
+      "price": 68880,
+      "amount": 2
+    },
+    {
+      "price": 69000,
+      "amount": 1247
+    },
+    {
+      "price": 70000,
+      "amount": 1
+    },
+    {
+      "price": 70000,
+      "amount": 311
+    },
+    {
+      "price": 70000,
+      "amount": 2
+    },
+    {
+      "price": 70000,
+      "amount": 6
+    },
+    {
+      "price": 71000,
+      "amount": 143
+    },
+    {
+      "price": 71399,
+      "amount": 127
+    },
+    {
+      "price": 72081,
+      "amount": 22
+    },
+    {
+      "price": 72720,
+      "amount": 8
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 62399,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 62399,
+      "note": "cluster of 15"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 62399,
+      "note": "cluster of 31"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 272,
+    "name": "Edelweiss"
+  },
+  "fetchedAt": "2026-11-12T21:54:22.893Z",
+  "listings": [
+    {
+      "price": 15416,
+      "amount": 13
+    },
+    {
+      "price": 15899,
+      "amount": 1
+    },
+    {
+      "price": 16100,
+      "amount": 5
+    },
+    {
+      "price": 16100,
+      "amount": 28
+    },
+    {
+      "price": 16200,
+      "amount": 281
+    },
+    {
+      "price": 16299,
+      "amount": 22
+    },
+    {
+      "price": 16299,
+      "amount": 27
+    },
+    {
+      "price": 16299,
+      "amount": 30
+    },
+    {
+      "price": 16299,
+      "amount": 1
+    },
+    {
+      "price": 16300,
+      "amount": 10
+    },
+    {
+      "price": 16379,
+      "amount": 28
+    },
+    {
+      "price": 16384,
+      "amount": 7
+    },
+    {
+      "price": 16395,
+      "amount": 6
+    },
+    {
+      "price": 16400,
+      "amount": 7
+    },
+    {
+      "price": 16400,
+      "amount": 15
+    },
+    {
+      "price": 16405,
+      "amount": 1
+    },
+    {
+      "price": 16450,
+      "amount": 130
+    },
+    {
+      "price": 16499,
+      "amount": 12
+    },
+    {
+      "price": 16500,
+      "amount": 38
+    },
+    {
+      "price": 16500,
+      "amount": 18
+    },
+    {
+      "price": 16500,
+      "amount": 18
+    },
+    {
+      "price": 16500,
+      "amount": 28
+    },
+    {
+      "price": 16500,
+      "amount": 2
+    },
+    {
+      "price": 16500,
+      "amount": 19
+    },
+    {
+      "price": 16500,
+      "amount": 1
+    },
+    {
+      "price": 16500,
+      "amount": 22
+    },
+    {
+      "price": 16523,
+      "amount": 1
+    },
+    {
+      "price": 16555,
+      "amount": 7
+    },
+    {
+      "price": 16555,
+      "amount": 78
+    },
+    {
+      "price": 16650,
+      "amount": 28
+    },
+    {
+      "price": 16800,
+      "amount": 7
+    },
+    {
+      "price": 16804,
+      "amount": 11
+    },
+    {
+      "price": 16969,
+      "amount": 10
+    },
+    {
+      "price": 16999,
+      "amount": 5
+    },
+    {
+      "price": 16999,
+      "amount": 22
+    },
+    {
+      "price": 17000,
+      "amount": 13
+    },
+    {
+      "price": 17000,
+      "amount": 19
+    },
+    {
+      "price": 17000,
+      "amount": 36
+    },
+    {
+      "price": 17000,
+      "amount": 12
+    },
+    {
+      "price": 17000,
+      "amount": 27
+    },
+    {
+      "price": 17000,
+      "amount": 13
+    },
+    {
+      "price": 17374,
+      "amount": 43
+    },
+    {
+      "price": 17499,
+      "amount": 33
+    },
+    {
+      "price": 17500,
+      "amount": 11
+    },
+    {
+      "price": 17500,
+      "amount": 27
+    },
+    {
+      "price": 17500,
+      "amount": 20
+    },
+    {
+      "price": 17800,
+      "amount": 4
+    },
+    {
+      "price": 17800,
+      "amount": 28
+    },
+    {
+      "price": 17888,
+      "amount": 55
+    },
+    {
+      "price": 17900,
+      "amount": 28
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 15415,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 15898,
+      "note": "cluster of 4"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 15415,
+      "note": "cluster of 4"
+    }
+  ]
+}

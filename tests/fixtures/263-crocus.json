@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 263,
+    "name": "Crocus"
+  },
+  "fetchedAt": "2026-11-12T21:54:21.066Z",
+  "listings": [
+    {
+      "price": 3990,
+      "amount": 46
+    },
+    {
+      "price": 4000,
+      "amount": 309
+    },
+    {
+      "price": 4100,
+      "amount": 104
+    },
+    {
+      "price": 4199,
+      "amount": 5
+    },
+    {
+      "price": 4800,
+      "amount": 36
+    },
+    {
+      "price": 4919,
+      "amount": 26
+    },
+    {
+      "price": 4970,
+      "amount": 74
+    },
+    {
+      "price": 4990,
+      "amount": 15
+    },
+    {
+      "price": 4999,
+      "amount": 23
+    },
+    {
+      "price": 5000,
+      "amount": 5
+    },
+    {
+      "price": 5000,
+      "amount": 52
+    },
+    {
+      "price": 5023,
+      "amount": 1
+    },
+    {
+      "price": 5049,
+      "amount": 104
+    },
+    {
+      "price": 5050,
+      "amount": 131
+    },
+    {
+      "price": 5050,
+      "amount": 27
+    },
+    {
+      "price": 5069,
+      "amount": 20
+    },
+    {
+      "price": 5100,
+      "amount": 305
+    },
+    {
+      "price": 5140,
+      "amount": 23
+    },
+    {
+      "price": 5146,
+      "amount": 100
+    },
+    {
+      "price": 5147,
+      "amount": 5722
+    },
+    {
+      "price": 5200,
+      "amount": 599
+    },
+    {
+      "price": 5285,
+      "amount": 103
+    },
+    {
+      "price": 5300,
+      "amount": 1
+    },
+    {
+      "price": 5389,
+      "amount": 2
+    },
+    {
+      "price": 5450,
+      "amount": 4194
+    },
+    {
+      "price": 5498,
+      "amount": 5131
+    },
+    {
+      "price": 5499,
+      "amount": 10
+    },
+    {
+      "price": 5500,
+      "amount": 1
+    },
+    {
+      "price": 5500,
+      "amount": 30
+    },
+    {
+      "price": 5506,
+      "amount": 34
+    },
+    {
+      "price": 5555,
+      "amount": 26
+    },
+    {
+      "price": 5888,
+      "amount": 38
+    },
+    {
+      "price": 5890,
+      "amount": 573
+    },
+    {
+      "price": 5899,
+      "amount": 13
+    },
+    {
+      "price": 5998,
+      "amount": 18
+    },
+    {
+      "price": 5999,
+      "amount": 81
+    },
+    {
+      "price": 6000,
+      "amount": 149
+    },
+    {
+      "price": 6000,
+      "amount": 227
+    },
+    {
+      "price": 6000,
+      "amount": 55
+    },
+    {
+      "price": 6333,
+      "amount": 30
+    },
+    {
+      "price": 6460,
+      "amount": 19
+    },
+    {
+      "price": 6500,
+      "amount": 90
+    },
+    {
+      "price": 6599,
+      "amount": 9
+    },
+    {
+      "price": 6900,
+      "amount": 9
+    },
+    {
+      "price": 6985,
+      "amount": 55
+    },
+    {
+      "price": 6995,
+      "amount": 20
+    },
+    {
+      "price": 7000,
+      "amount": 182
+    },
+    {
+      "price": 7000,
+      "amount": 1
+    },
+    {
+      "price": 7000,
+      "amount": 2201
+    },
+    {
+      "price": 7000,
+      "amount": 404
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 3989,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4918,
+      "note": "cluster of 6"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 3989,
+      "note": "cluster of 3"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 264,
+    "name": "Orchid"
+  },
+  "fetchedAt": "2026-11-12T21:51:15.088Z",
+  "listings": [
+    {
+      "price": 4699,
+      "amount": 130
+    },
+    {
+      "price": 4700,
+      "amount": 168
+    },
+    {
+      "price": 4790,
+      "amount": 15
+    },
+    {
+      "price": 4795,
+      "amount": 28
+    },
+    {
+      "price": 4795,
+      "amount": 22
+    },
+    {
+      "price": 4795,
+      "amount": 130
+    },
+    {
+      "price": 4799,
+      "amount": 7
+    },
+    {
+      "price": 4800,
+      "amount": 5
+    },
+    {
+      "price": 4800,
+      "amount": 26
+    },
+    {
+      "price": 4800,
+      "amount": 45
+    },
+    {
+      "price": 4801,
+      "amount": 18
+    },
+    {
+      "price": 4899,
+      "amount": 73
+    },
+    {
+      "price": 4999,
+      "amount": 2
+    },
+    {
+      "price": 5000,
+      "amount": 5
+    },
+    {
+      "price": 5400,
+      "amount": 2
+    },
+    {
+      "price": 5500,
+      "amount": 12
+    },
+    {
+      "price": 5800,
+      "amount": 492
+    },
+    {
+      "price": 5890,
+      "amount": 28
+    },
+    {
+      "price": 5894,
+      "amount": 4
+    },
+    {
+      "price": 5894,
+      "amount": 28
+    },
+    {
+      "price": 5894,
+      "amount": 30
+    },
+    {
+      "price": 5900,
+      "amount": 9
+    },
+    {
+      "price": 5900,
+      "amount": 6
+    },
+    {
+      "price": 5995,
+      "amount": 33
+    },
+    {
+      "price": 5995,
+      "amount": 18
+    },
+    {
+      "price": 5995,
+      "amount": 1
+    },
+    {
+      "price": 5995,
+      "amount": 11
+    },
+    {
+      "price": 5999,
+      "amount": 66
+    },
+    {
+      "price": 6000,
+      "amount": 38
+    },
+    {
+      "price": 6000,
+      "amount": 18
+    },
+    {
+      "price": 6000,
+      "amount": 13
+    },
+    {
+      "price": 6000,
+      "amount": 110
+    },
+    {
+      "price": 6089,
+      "amount": 25
+    },
+    {
+      "price": 6094,
+      "amount": 53
+    },
+    {
+      "price": 6094,
+      "amount": 21
+    },
+    {
+      "price": 6095,
+      "amount": 52
+    },
+    {
+      "price": 6097,
+      "amount": 113
+    },
+    {
+      "price": 6098,
+      "amount": 23
+    },
+    {
+      "price": 6133,
+      "amount": 10
+    },
+    {
+      "price": 6139,
+      "amount": 154
+    },
+    {
+      "price": 6145,
+      "amount": 18
+    },
+    {
+      "price": 6145,
+      "amount": 7
+    },
+    {
+      "price": 6145,
+      "amount": 2
+    },
+    {
+      "price": 6145,
+      "amount": 26
+    },
+    {
+      "price": 6200,
+      "amount": 84
+    },
+    {
+      "price": 6200,
+      "amount": 27
+    },
+    {
+      "price": 6237,
+      "amount": 27
+    },
+    {
+      "price": 6239,
+      "amount": 13
+    },
+    {
+      "price": 6239,
+      "amount": 28
+    },
+    {
+      "price": 6250,
+      "amount": 26
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4698,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4698,
+      "note": "cluster of 3"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 4698,
+      "note": "cluster of 12"
+    }
+  ]
+}

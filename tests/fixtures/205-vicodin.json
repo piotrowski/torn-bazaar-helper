@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 205,
+    "name": "Vicodin"
+  },
+  "fetchedAt": "2026-11-12T21:54:28.986Z",
+  "listings": [
+    {
+      "price": 1544,
+      "amount": 6
+    },
+    {
+      "price": 1555,
+      "amount": 10
+    },
+    {
+      "price": 1625,
+      "amount": 4
+    },
+    {
+      "price": 1625,
+      "amount": 1
+    },
+    {
+      "price": 1625,
+      "amount": 8
+    },
+    {
+      "price": 1788,
+      "amount": 178
+    },
+    {
+      "price": 1799,
+      "amount": 25
+    },
+    {
+      "price": 1800,
+      "amount": 6367
+    },
+    {
+      "price": 1894,
+      "amount": 1
+    },
+    {
+      "price": 1894,
+      "amount": 4
+    },
+    {
+      "price": 1894,
+      "amount": 5
+    },
+    {
+      "price": 1894,
+      "amount": 2
+    },
+    {
+      "price": 1898,
+      "amount": 43
+    },
+    {
+      "price": 1899,
+      "amount": 6238
+    },
+    {
+      "price": 1900,
+      "amount": 12
+    },
+    {
+      "price": 1947,
+      "amount": 9999
+    },
+    {
+      "price": 1950,
+      "amount": 9990
+    },
+    {
+      "price": 1975,
+      "amount": 21
+    },
+    {
+      "price": 1983,
+      "amount": 660
+    },
+    {
+      "price": 1990,
+      "amount": 9999
+    },
+    {
+      "price": 1999,
+      "amount": 900
+    },
+    {
+      "price": 1999,
+      "amount": 289
+    },
+    {
+      "price": 1999,
+      "amount": 20
+    },
+    {
+      "price": 1999,
+      "amount": 57
+    },
+    {
+      "price": 1999,
+      "amount": 31
+    },
+    {
+      "price": 1999,
+      "amount": 3
+    },
+    {
+      "price": 1999,
+      "amount": 2
+    },
+    {
+      "price": 2000,
+      "amount": 22
+    },
+    {
+      "price": 2000,
+      "amount": 13
+    },
+    {
+      "price": 2000,
+      "amount": 13
+    },
+    {
+      "price": 2000,
+      "amount": 74
+    },
+    {
+      "price": 2000,
+      "amount": 2
+    },
+    {
+      "price": 2000,
+      "amount": 2
+    },
+    {
+      "price": 2000,
+      "amount": 15
+    },
+    {
+      "price": 2000,
+      "amount": 27
+    },
+    {
+      "price": 2000,
+      "amount": 20
+    },
+    {
+      "price": 2000,
+      "amount": 12
+    },
+    {
+      "price": 2000,
+      "amount": 6
+    },
+    {
+      "price": 2000,
+      "amount": 1
+    },
+    {
+      "price": 2000,
+      "amount": 4
+    },
+    {
+      "price": 2000,
+      "amount": 1
+    },
+    {
+      "price": 2000,
+      "amount": 1
+    },
+    {
+      "price": 2000,
+      "amount": 1
+    },
+    {
+      "price": 2000,
+      "amount": 2
+    },
+    {
+      "price": 2000,
+      "amount": 13
+    },
+    {
+      "price": 2000,
+      "amount": 30
+    },
+    {
+      "price": 2000,
+      "amount": 2
+    },
+    {
+      "price": 2000,
+      "amount": 1
+    },
+    {
+      "price": 2000,
+      "amount": 70
+    },
+    {
+      "price": 2000,
+      "amount": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 1543,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 1624,
+      "note": "cluster of 3"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 1554,
+      "note": "cluster of 4"
+    }
+  ]
+}

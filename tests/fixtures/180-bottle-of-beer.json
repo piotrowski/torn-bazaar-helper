@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 180,
+    "name": "Bottle of Beer"
+  },
+  "fetchedAt": "2026-11-12T21:51:16.967Z",
+  "listings": [
+    {
+      "price": 800,
+      "amount": 12
+    },
+    {
+      "price": 990,
+      "amount": 253
+    },
+    {
+      "price": 990,
+      "amount": 3
+    },
+    {
+      "price": 994,
+      "amount": 11
+    },
+    {
+      "price": 994,
+      "amount": 757
+    },
+    {
+      "price": 994,
+      "amount": 20
+    },
+    {
+      "price": 994,
+      "amount": 8
+    },
+    {
+      "price": 994,
+      "amount": 3
+    },
+    {
+      "price": 998,
+      "amount": 3155
+    },
+    {
+      "price": 998,
+      "amount": 113
+    },
+    {
+      "price": 999,
+      "amount": 4502
+    },
+    {
+      "price": 999,
+      "amount": 150
+    },
+    {
+      "price": 999,
+      "amount": 105
+    },
+    {
+      "price": 999,
+      "amount": 100
+    },
+    {
+      "price": 1000,
+      "amount": 87
+    },
+    {
+      "price": 1000,
+      "amount": 100
+    },
+    {
+      "price": 1000,
+      "amount": 100
+    },
+    {
+      "price": 1000,
+      "amount": 3
+    },
+    {
+      "price": 1000,
+      "amount": 200
+    },
+    {
+      "price": 1020,
+      "amount": 104
+    },
+    {
+      "price": 1030,
+      "amount": 15
+    },
+    {
+      "price": 1039,
+      "amount": 108
+    },
+    {
+      "price": 1040,
+      "amount": 108
+    },
+    {
+      "price": 1047,
+      "amount": 9999
+    },
+    {
+      "price": 1048,
+      "amount": 1000
+    },
+    {
+      "price": 1049,
+      "amount": 100
+    },
+    {
+      "price": 1050,
+      "amount": 190
+    },
+    {
+      "price": 1050,
+      "amount": 297
+    },
+    {
+      "price": 1050,
+      "amount": 12
+    },
+    {
+      "price": 1061,
+      "amount": 1
+    },
+    {
+      "price": 1062,
+      "amount": 100
+    },
+    {
+      "price": 1062,
+      "amount": 200
+    },
+    {
+      "price": 1062,
+      "amount": 1
+    },
+    {
+      "price": 1062,
+      "amount": 50
+    },
+    {
+      "price": 1062,
+      "amount": 2
+    },
+    {
+      "price": 1062,
+      "amount": 4
+    },
+    {
+      "price": 1062,
+      "amount": 2
+    },
+    {
+      "price": 1062,
+      "amount": 10
+    },
+    {
+      "price": 1062,
+      "amount": 12
+    },
+    {
+      "price": 1062,
+      "amount": 223
+    },
+    {
+      "price": 1064,
+      "amount": 100
+    },
+    {
+      "price": 1065,
+      "amount": 9988
+    },
+    {
+      "price": 1066,
+      "amount": 67
+    },
+    {
+      "price": 1066,
+      "amount": 2
+    },
+    {
+      "price": 1066,
+      "amount": 4
+    },
+    {
+      "price": 1067,
+      "amount": 2000
+    },
+    {
+      "price": 1069,
+      "amount": 9996
+    },
+    {
+      "price": 1075,
+      "amount": 121
+    },
+    {
+      "price": 1080,
+      "amount": 300
+    },
+    {
+      "price": 1097,
+      "amount": 1213
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 799,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 989,
+      "note": "cluster of 18"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 989,
+      "note": "cluster of 21"
+    }
+  ]
+}

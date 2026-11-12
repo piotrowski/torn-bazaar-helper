@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 618,
+    "name": "Stingray Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:18.916Z",
+  "listings": [
+    {
+      "price": 5000,
+      "amount": 18
+    },
+    {
+      "price": 5850,
+      "amount": 114
+    },
+    {
+      "price": 5850,
+      "amount": 22
+    },
+    {
+      "price": 5850,
+      "amount": 77
+    },
+    {
+      "price": 5850,
+      "amount": 104
+    },
+    {
+      "price": 5883,
+      "amount": 1
+    },
+    {
+      "price": 5887,
+      "amount": 1
+    },
+    {
+      "price": 5887,
+      "amount": 5
+    },
+    {
+      "price": 5888,
+      "amount": 2
+    },
+    {
+      "price": 5900,
+      "amount": 25
+    },
+    {
+      "price": 5920,
+      "amount": 40
+    },
+    {
+      "price": 5950,
+      "amount": 938
+    },
+    {
+      "price": 5990,
+      "amount": 29
+    },
+    {
+      "price": 5997,
+      "amount": 27
+    },
+    {
+      "price": 5998,
+      "amount": 100
+    },
+    {
+      "price": 5999,
+      "amount": 18
+    },
+    {
+      "price": 5999,
+      "amount": 45
+    },
+    {
+      "price": 5999,
+      "amount": 260
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6000,
+      "amount": 2
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6000,
+      "amount": 10
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6000,
+      "amount": 208
+    },
+    {
+      "price": 6000,
+      "amount": 18
+    },
+    {
+      "price": 6000,
+      "amount": 138
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6000,
+      "amount": 2000
+    },
+    {
+      "price": 6000,
+      "amount": 15
+    },
+    {
+      "price": 6000,
+      "amount": 258
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6000,
+      "amount": 119
+    },
+    {
+      "price": 6000,
+      "amount": 13
+    },
+    {
+      "price": 6000,
+      "amount": 1
+    },
+    {
+      "price": 6169,
+      "amount": 77
+    },
+    {
+      "price": 6195,
+      "amount": 82
+    },
+    {
+      "price": 6200,
+      "amount": 91
+    },
+    {
+      "price": 6279,
+      "amount": 10
+    },
+    {
+      "price": 6290,
+      "amount": 30
+    },
+    {
+      "price": 6300,
+      "amount": 500
+    },
+    {
+      "price": 6350,
+      "amount": 1018
+    },
+    {
+      "price": 6500,
+      "amount": 26
+    },
+    {
+      "price": 6666,
+      "amount": 55
+    },
+    {
+      "price": 6666,
+      "amount": 10
+    },
+    {
+      "price": 6676,
+      "amount": 265
+    },
+    {
+      "price": 6779,
+      "amount": 6550
+    },
+    {
+      "price": 6780,
+      "amount": 90
+    },
+    {
+      "price": 6800,
+      "amount": 4263
+    },
+    {
+      "price": 6888,
+      "amount": 62
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4999,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 5849,
+      "note": "cluster of 11"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 5849,
+      "note": "cluster of 34"
+    }
+  ]
+}

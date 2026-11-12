@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 260,
+    "name": "Dahlia"
+  },
+  "fetchedAt": "2026-11-12T21:54:20.037Z",
+  "listings": [
+    {
+      "price": 3034,
+      "amount": 19
+    },
+    {
+      "price": 3035,
+      "amount": 19
+    },
+    {
+      "price": 3035,
+      "amount": 20
+    },
+    {
+      "price": 3100,
+      "amount": 12
+    },
+    {
+      "price": 3100,
+      "amount": 28
+    },
+    {
+      "price": 3111,
+      "amount": 15
+    },
+    {
+      "price": 3185,
+      "amount": 28
+    },
+    {
+      "price": 3200,
+      "amount": 168
+    },
+    {
+      "price": 3200,
+      "amount": 45
+    },
+    {
+      "price": 3250,
+      "amount": 48
+    },
+    {
+      "price": 3299,
+      "amount": 10
+    },
+    {
+      "price": 3300,
+      "amount": 8
+    },
+    {
+      "price": 3300,
+      "amount": 5
+    },
+    {
+      "price": 3332,
+      "amount": 12
+    },
+    {
+      "price": 3333,
+      "amount": 84
+    },
+    {
+      "price": 3333,
+      "amount": 10
+    },
+    {
+      "price": 3345,
+      "amount": 1833
+    },
+    {
+      "price": 3360,
+      "amount": 299
+    },
+    {
+      "price": 3369,
+      "amount": 463
+    },
+    {
+      "price": 3379,
+      "amount": 233
+    },
+    {
+      "price": 3399,
+      "amount": 1
+    },
+    {
+      "price": 3475,
+      "amount": 5
+    },
+    {
+      "price": 3498,
+      "amount": 9999
+    },
+    {
+      "price": 3499,
+      "amount": 1000
+    },
+    {
+      "price": 3500,
+      "amount": 20
+    },
+    {
+      "price": 3500,
+      "amount": 11
+    },
+    {
+      "price": 3500,
+      "amount": 12
+    },
+    {
+      "price": 3500,
+      "amount": 55
+    },
+    {
+      "price": 3500,
+      "amount": 5
+    },
+    {
+      "price": 3500,
+      "amount": 112
+    },
+    {
+      "price": 3500,
+      "amount": 26
+    },
+    {
+      "price": 3500,
+      "amount": 55
+    },
+    {
+      "price": 3500,
+      "amount": 100
+    },
+    {
+      "price": 3505,
+      "amount": 8
+    },
+    {
+      "price": 3575,
+      "amount": 651
+    },
+    {
+      "price": 3599,
+      "amount": 1
+    },
+    {
+      "price": 3600,
+      "amount": 15
+    },
+    {
+      "price": 3660,
+      "amount": 83
+    },
+    {
+      "price": 3666,
+      "amount": 162
+    },
+    {
+      "price": 3690,
+      "amount": 20
+    },
+    {
+      "price": 3700,
+      "amount": 29
+    },
+    {
+      "price": 3700,
+      "amount": 149
+    },
+    {
+      "price": 3764,
+      "amount": 1
+    },
+    {
+      "price": 3800,
+      "amount": 29
+    },
+    {
+      "price": 3800,
+      "amount": 409
+    },
+    {
+      "price": 3845,
+      "amount": 500
+    },
+    {
+      "price": 3897,
+      "amount": 26
+    },
+    {
+      "price": 3898,
+      "amount": 36
+    },
+    {
+      "price": 3899,
+      "amount": 9999
+    },
+    {
+      "price": 3985,
+      "amount": 150
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 3033,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 3033,
+      "note": "cluster of 3"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 3033,
+      "note": "cluster of 7"
+    }
+  ]
+}

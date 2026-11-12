@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 266,
+    "name": "Nessie Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:15.868Z",
+  "listings": [
+    {
+      "price": 31390,
+      "amount": 54
+    },
+    {
+      "price": 31390,
+      "amount": 20
+    },
+    {
+      "price": 31998,
+      "amount": 20
+    },
+    {
+      "price": 31999,
+      "amount": 13
+    },
+    {
+      "price": 32000,
+      "amount": 6
+    },
+    {
+      "price": 32000,
+      "amount": 10
+    },
+    {
+      "price": 32000,
+      "amount": 1
+    },
+    {
+      "price": 32000,
+      "amount": 22
+    },
+    {
+      "price": 32000,
+      "amount": 35
+    },
+    {
+      "price": 32000,
+      "amount": 28
+    },
+    {
+      "price": 32000,
+      "amount": 28
+    },
+    {
+      "price": 32000,
+      "amount": 20
+    },
+    {
+      "price": 32000,
+      "amount": 26
+    },
+    {
+      "price": 32000,
+      "amount": 17
+    },
+    {
+      "price": 32000,
+      "amount": 11
+    },
+    {
+      "price": 32194,
+      "amount": 45
+    },
+    {
+      "price": 32222,
+      "amount": 16
+    },
+    {
+      "price": 32499,
+      "amount": 50
+    },
+    {
+      "price": 32800,
+      "amount": 18
+    },
+    {
+      "price": 32840,
+      "amount": 88
+    },
+    {
+      "price": 32888,
+      "amount": 1
+    },
+    {
+      "price": 32888,
+      "amount": 8
+    },
+    {
+      "price": 32900,
+      "amount": 17
+    },
+    {
+      "price": 32900,
+      "amount": 112
+    },
+    {
+      "price": 32995,
+      "amount": 270
+    },
+    {
+      "price": 32998,
+      "amount": 187
+    },
+    {
+      "price": 32998,
+      "amount": 46
+    },
+    {
+      "price": 32999,
+      "amount": 10
+    },
+    {
+      "price": 32999,
+      "amount": 10
+    },
+    {
+      "price": 32999,
+      "amount": 227
+    },
+    {
+      "price": 32999,
+      "amount": 5
+    },
+    {
+      "price": 32999,
+      "amount": 2
+    },
+    {
+      "price": 33000,
+      "amount": 1
+    },
+    {
+      "price": 33000,
+      "amount": 1
+    },
+    {
+      "price": 33000,
+      "amount": 14
+    },
+    {
+      "price": 33000,
+      "amount": 26
+    },
+    {
+      "price": 33000,
+      "amount": 18
+    },
+    {
+      "price": 33000,
+      "amount": 882
+    },
+    {
+      "price": 33000,
+      "amount": 16
+    },
+    {
+      "price": 33000,
+      "amount": 34
+    },
+    {
+      "price": 33000,
+      "amount": 28
+    },
+    {
+      "price": 33060,
+      "amount": 3
+    },
+    {
+      "price": 33333,
+      "amount": 249
+    },
+    {
+      "price": 33333,
+      "amount": 100
+    },
+    {
+      "price": 33800,
+      "amount": 56
+    },
+    {
+      "price": 33996,
+      "amount": 9999
+    },
+    {
+      "price": 33999,
+      "amount": 29
+    },
+    {
+      "price": 34000,
+      "amount": 36
+    },
+    {
+      "price": 34000,
+      "amount": 211
+    },
+    {
+      "price": 34000,
+      "amount": 196
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 31389,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 31389,
+      "note": "cluster of 15"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 31389,
+      "note": "cluster of 24"
+    }
+  ]
+}

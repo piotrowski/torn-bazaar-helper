@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 196,
+    "name": "Cannabis"
+  },
+  "fetchedAt": "2026-11-12T21:54:25.835Z",
+  "listings": [
+    {
+      "price": 10400,
+      "amount": 265
+    },
+    {
+      "price": 10999,
+      "amount": 53
+    },
+    {
+      "price": 11000,
+      "amount": 344
+    },
+    {
+      "price": 11000,
+      "amount": 103
+    },
+    {
+      "price": 11000,
+      "amount": 15
+    },
+    {
+      "price": 11111,
+      "amount": 85
+    },
+    {
+      "price": 11118,
+      "amount": 641
+    },
+    {
+      "price": 11400,
+      "amount": 50
+    },
+    {
+      "price": 11800,
+      "amount": 100
+    },
+    {
+      "price": 11879,
+      "amount": 100
+    },
+    {
+      "price": 11880,
+      "amount": 2
+    },
+    {
+      "price": 11889,
+      "amount": 225
+    },
+    {
+      "price": 11900,
+      "amount": 75
+    },
+    {
+      "price": 11940,
+      "amount": 24
+    },
+    {
+      "price": 11946,
+      "amount": 15
+    },
+    {
+      "price": 11946,
+      "amount": 12
+    },
+    {
+      "price": 11946,
+      "amount": 324
+    },
+    {
+      "price": 11946,
+      "amount": 36
+    },
+    {
+      "price": 11946,
+      "amount": 13
+    },
+    {
+      "price": 11946,
+      "amount": 22
+    },
+    {
+      "price": 11946,
+      "amount": 21
+    },
+    {
+      "price": 11946,
+      "amount": 18
+    },
+    {
+      "price": 11946,
+      "amount": 20
+    },
+    {
+      "price": 11999,
+      "amount": 99
+    },
+    {
+      "price": 11999,
+      "amount": 18
+    },
+    {
+      "price": 12000,
+      "amount": 13
+    },
+    {
+      "price": 12000,
+      "amount": 90
+    },
+    {
+      "price": 12000,
+      "amount": 15
+    },
+    {
+      "price": 12000,
+      "amount": 14
+    },
+    {
+      "price": 12000,
+      "amount": 12
+    },
+    {
+      "price": 12000,
+      "amount": 119
+    },
+    {
+      "price": 12000,
+      "amount": 5200
+    },
+    {
+      "price": 12000,
+      "amount": 5376
+    },
+    {
+      "price": 12000,
+      "amount": 38
+    },
+    {
+      "price": 12000,
+      "amount": 2
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    },
+    {
+      "price": 12000,
+      "amount": 2
+    },
+    {
+      "price": 12000,
+      "amount": 3
+    },
+    {
+      "price": 12000,
+      "amount": 2
+    },
+    {
+      "price": 12000,
+      "amount": 8
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    },
+    {
+      "price": 12000,
+      "amount": 2
+    },
+    {
+      "price": 12000,
+      "amount": 91
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    },
+    {
+      "price": 12000,
+      "amount": 4
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    },
+    {
+      "price": 12000,
+      "amount": 2
+    },
+    {
+      "price": 12000,
+      "amount": 1
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 10399,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 10998,
+      "note": "cluster of 6"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 10998,
+      "note": "cluster of 7"
+    }
+  ]
+}

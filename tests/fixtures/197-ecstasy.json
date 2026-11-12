@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 197,
+    "name": "Ecstasy"
+  },
+  "fetchedAt": "2026-11-12T21:54:27.084Z",
+  "listings": [
+    {
+      "price": 39995,
+      "amount": 552
+    },
+    {
+      "price": 39995,
+      "amount": 4
+    },
+    {
+      "price": 40000,
+      "amount": 9819
+    },
+    {
+      "price": 40000,
+      "amount": 15
+    },
+    {
+      "price": 40450,
+      "amount": 50
+    },
+    {
+      "price": 40500,
+      "amount": 3
+    },
+    {
+      "price": 40940,
+      "amount": 2
+    },
+    {
+      "price": 40944,
+      "amount": 13
+    },
+    {
+      "price": 40945,
+      "amount": 5
+    },
+    {
+      "price": 40993,
+      "amount": 7525
+    },
+    {
+      "price": 41000,
+      "amount": 10
+    },
+    {
+      "price": 41000,
+      "amount": 6
+    },
+    {
+      "price": 41899,
+      "amount": 135
+    },
+    {
+      "price": 42000,
+      "amount": 21
+    },
+    {
+      "price": 42000,
+      "amount": 24
+    },
+    {
+      "price": 42000,
+      "amount": 1
+    },
+    {
+      "price": 42400,
+      "amount": 1638
+    },
+    {
+      "price": 43000,
+      "amount": 10
+    },
+    {
+      "price": 43999,
+      "amount": 103
+    },
+    {
+      "price": 44000,
+      "amount": 22
+    },
+    {
+      "price": 44000,
+      "amount": 1
+    },
+    {
+      "price": 44400,
+      "amount": 21
+    },
+    {
+      "price": 44444,
+      "amount": 18
+    },
+    {
+      "price": 44444,
+      "amount": 3
+    },
+    {
+      "price": 44444,
+      "amount": 70
+    },
+    {
+      "price": 44754,
+      "amount": 5
+    },
+    {
+      "price": 44995,
+      "amount": 48
+    },
+    {
+      "price": 44999,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 3
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 3
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 3
+    },
+    {
+      "price": 45000,
+      "amount": 260
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 4
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 7
+    },
+    {
+      "price": 45000,
+      "amount": 1
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45300,
+      "amount": 11
+    },
+    {
+      "price": 45420,
+      "amount": 2
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 39994,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 39994,
+      "note": "cluster of 6"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 39994,
+      "note": "cluster of 13"
+    }
+  ]
+}

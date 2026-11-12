@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 367,
+    "name": "Feathery Hotel Coupon"
+  },
+  "fetchedAt": "2026-11-12T21:54:30.662Z",
+  "listings": [
+    {
+      "price": 14500000,
+      "amount": 1
+    },
+    {
+      "price": 14520000,
+      "amount": 2
+    },
+    {
+      "price": 14547999,
+      "amount": 1
+    },
+    {
+      "price": 14548000,
+      "amount": 1
+    },
+    {
+      "price": 14549000,
+      "amount": 2
+    },
+    {
+      "price": 14550000,
+      "amount": 8
+    },
+    {
+      "price": 14550000,
+      "amount": 1
+    },
+    {
+      "price": 14569663,
+      "amount": 7
+    },
+    {
+      "price": 14587995,
+      "amount": 1
+    },
+    {
+      "price": 14596999,
+      "amount": 1
+    },
+    {
+      "price": 14597000,
+      "amount": 1
+    },
+    {
+      "price": 14600000,
+      "amount": 1
+    },
+    {
+      "price": 14643000,
+      "amount": 40
+    },
+    {
+      "price": 14644000,
+      "amount": 67
+    },
+    {
+      "price": 14644888,
+      "amount": 65
+    },
+    {
+      "price": 14649900,
+      "amount": 75
+    },
+    {
+      "price": 14680000,
+      "amount": 86
+    },
+    {
+      "price": 14696999,
+      "amount": 26
+    },
+    {
+      "price": 14697997,
+      "amount": 1
+    },
+    {
+      "price": 14700000,
+      "amount": 1
+    },
+    {
+      "price": 14725000,
+      "amount": 1
+    },
+    {
+      "price": 14739000,
+      "amount": 1
+    },
+    {
+      "price": 14741998,
+      "amount": 5
+    },
+    {
+      "price": 14748999,
+      "amount": 1
+    },
+    {
+      "price": 14784900,
+      "amount": 1
+    },
+    {
+      "price": 14800000,
+      "amount": 1
+    },
+    {
+      "price": 14800000,
+      "amount": 1
+    },
+    {
+      "price": 14811590,
+      "amount": 1
+    },
+    {
+      "price": 14900000,
+      "amount": 100
+    },
+    {
+      "price": 14900000,
+      "amount": 2
+    },
+    {
+      "price": 14907000,
+      "amount": 1
+    },
+    {
+      "price": 14907895,
+      "amount": 23
+    },
+    {
+      "price": 14990000,
+      "amount": 1
+    },
+    {
+      "price": 14999990,
+      "amount": 1
+    },
+    {
+      "price": 14999995,
+      "amount": 7
+    },
+    {
+      "price": 14999999,
+      "amount": 1
+    },
+    {
+      "price": 15000000,
+      "amount": 2
+    },
+    {
+      "price": 15000000,
+      "amount": 1
+    },
+    {
+      "price": 15197000,
+      "amount": 1
+    },
+    {
+      "price": 15198000,
+      "amount": 1
+    },
+    {
+      "price": 15199999,
+      "amount": 1
+    },
+    {
+      "price": 15200000,
+      "amount": 1
+    },
+    {
+      "price": 15200000,
+      "amount": 8
+    },
+    {
+      "price": 15350000,
+      "amount": 1
+    },
+    {
+      "price": 15500000,
+      "amount": 1
+    },
+    {
+      "price": 15500000,
+      "amount": 1
+    },
+    {
+      "price": 15780000,
+      "amount": 1
+    },
+    {
+      "price": 15788888,
+      "amount": 1
+    },
+    {
+      "price": 15789500,
+      "amount": 1
+    },
+    {
+      "price": 15848998,
+      "amount": 1
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 14499999,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 14499999,
+      "note": "cluster of 25"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 14499999,
+      "note": "cluster of 43"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 206,
+    "name": "Xanax"
+  },
+  "fetchedAt": "2026-11-12T21:51:13.321Z",
+  "listings": [
+    {
+      "price": 859999,
+      "amount": 1
+    },
+    {
+      "price": 860000,
+      "amount": 2
+    },
+    {
+      "price": 867500,
+      "amount": 3
+    },
+    {
+      "price": 867999,
+      "amount": 1
+    },
+    {
+      "price": 868000,
+      "amount": 183
+    },
+    {
+      "price": 868395,
+      "amount": 9
+    },
+    {
+      "price": 869000,
+      "amount": 703
+    },
+    {
+      "price": 869000,
+      "amount": 30
+    },
+    {
+      "price": 869000,
+      "amount": 27
+    },
+    {
+      "price": 870000,
+      "amount": 5
+    },
+    {
+      "price": 870000,
+      "amount": 1
+    },
+    {
+      "price": 873000,
+      "amount": 369
+    },
+    {
+      "price": 873999,
+      "amount": 9
+    },
+    {
+      "price": 874900,
+      "amount": 12
+    },
+    {
+      "price": 878000,
+      "amount": 3
+    },
+    {
+      "price": 878999,
+      "amount": 2
+    },
+    {
+      "price": 879000,
+      "amount": 2
+    },
+    {
+      "price": 879400,
+      "amount": 23
+    },
+    {
+      "price": 879980,
+      "amount": 2
+    },
+    {
+      "price": 879995,
+      "amount": 25
+    },
+    {
+      "price": 879999,
+      "amount": 8
+    },
+    {
+      "price": 880000,
+      "amount": 2
+    },
+    {
+      "price": 880000,
+      "amount": 10
+    },
+    {
+      "price": 880000,
+      "amount": 5
+    },
+    {
+      "price": 884800,
+      "amount": 15
+    },
+    {
+      "price": 884998,
+      "amount": 19
+    },
+    {
+      "price": 885000,
+      "amount": 4
+    },
+    {
+      "price": 886000,
+      "amount": 18
+    },
+    {
+      "price": 887499,
+      "amount": 20
+    },
+    {
+      "price": 887788,
+      "amount": 5
+    },
+    {
+      "price": 888888,
+      "amount": 100
+    },
+    {
+      "price": 888888,
+      "amount": 17
+    },
+    {
+      "price": 889999,
+      "amount": 1
+    },
+    {
+      "price": 890000,
+      "amount": 9
+    },
+    {
+      "price": 892000,
+      "amount": 2
+    },
+    {
+      "price": 894999,
+      "amount": 1
+    },
+    {
+      "price": 895935,
+      "amount": 1
+    },
+    {
+      "price": 895995,
+      "amount": 350
+    },
+    {
+      "price": 898990,
+      "amount": 1
+    },
+    {
+      "price": 899992,
+      "amount": 22
+    },
+    {
+      "price": 899999,
+      "amount": 6
+    },
+    {
+      "price": 899999,
+      "amount": 10
+    },
+    {
+      "price": 899999,
+      "amount": 1
+    },
+    {
+      "price": 900000,
+      "amount": 3
+    },
+    {
+      "price": 900000,
+      "amount": 69
+    },
+    {
+      "price": 900000,
+      "amount": 5
+    },
+    {
+      "price": 900000,
+      "amount": 5
+    },
+    {
+      "price": 900000,
+      "amount": 1
+    },
+    {
+      "price": 900000,
+      "amount": 16
+    },
+    {
+      "price": 900000,
+      "amount": 1
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 859998,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 859998,
+      "note": "cluster of 14"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 859998,
+      "note": "cluster of 50"
+    }
+  ]
+}

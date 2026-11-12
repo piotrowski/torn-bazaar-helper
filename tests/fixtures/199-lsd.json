@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 199,
+    "name": "LSD"
+  },
+  "fetchedAt": "2026-11-12T21:54:28.224Z",
+  "listings": [
+    {
+      "price": 23397,
+      "amount": 2
+    },
+    {
+      "price": 26600,
+      "amount": 27
+    },
+    {
+      "price": 26990,
+      "amount": 96
+    },
+    {
+      "price": 26999,
+      "amount": 3
+    },
+    {
+      "price": 27121,
+      "amount": 2
+    },
+    {
+      "price": 27130,
+      "amount": 1
+    },
+    {
+      "price": 27899,
+      "amount": 4
+    },
+    {
+      "price": 27998,
+      "amount": 168
+    },
+    {
+      "price": 27999,
+      "amount": 417
+    },
+    {
+      "price": 27999,
+      "amount": 4
+    },
+    {
+      "price": 27999,
+      "amount": 27
+    },
+    {
+      "price": 28000,
+      "amount": 1
+    },
+    {
+      "price": 28280,
+      "amount": 14
+    },
+    {
+      "price": 28500,
+      "amount": 40
+    },
+    {
+      "price": 28988,
+      "amount": 10
+    },
+    {
+      "price": 29950,
+      "amount": 85
+    },
+    {
+      "price": 29999,
+      "amount": 3
+    },
+    {
+      "price": 29999,
+      "amount": 37
+    },
+    {
+      "price": 30000,
+      "amount": 69
+    },
+    {
+      "price": 30000,
+      "amount": 76
+    },
+    {
+      "price": 30000,
+      "amount": 38
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 41
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 5
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 116
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 3
+    },
+    {
+      "price": 30000,
+      "amount": 11
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 3
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 8
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    },
+    {
+      "price": 30000,
+      "amount": 2
+    },
+    {
+      "price": 30000,
+      "amount": 249
+    },
+    {
+      "price": 30000,
+      "amount": 1
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 23396,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 26599,
+      "note": "cluster of 5"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 26599,
+      "note": "cluster of 6"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 258,
+    "name": "Jaguar Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:14.098Z",
+  "listings": [
+    {
+      "price": 14994,
+      "amount": 10
+    },
+    {
+      "price": 14995,
+      "amount": 54
+    },
+    {
+      "price": 14996,
+      "amount": 11
+    },
+    {
+      "price": 14997,
+      "amount": 23
+    },
+    {
+      "price": 14998,
+      "amount": 15
+    },
+    {
+      "price": 14999,
+      "amount": 253
+    },
+    {
+      "price": 14999,
+      "amount": 40
+    },
+    {
+      "price": 15000,
+      "amount": 275
+    },
+    {
+      "price": 15000,
+      "amount": 20
+    },
+    {
+      "price": 15000,
+      "amount": 18
+    },
+    {
+      "price": 15000,
+      "amount": 25
+    },
+    {
+      "price": 15000,
+      "amount": 65
+    },
+    {
+      "price": 15250,
+      "amount": 11
+    },
+    {
+      "price": 15250,
+      "amount": 16
+    },
+    {
+      "price": 15264,
+      "amount": 11
+    },
+    {
+      "price": 15264,
+      "amount": 18
+    },
+    {
+      "price": 15268,
+      "amount": 9
+    },
+    {
+      "price": 15268,
+      "amount": 90
+    },
+    {
+      "price": 15269,
+      "amount": 1
+    },
+    {
+      "price": 15270,
+      "amount": 15
+    },
+    {
+      "price": 15288,
+      "amount": 9
+    },
+    {
+      "price": 15293,
+      "amount": 28
+    },
+    {
+      "price": 15294,
+      "amount": 11
+    },
+    {
+      "price": 15295,
+      "amount": 54
+    },
+    {
+      "price": 15297,
+      "amount": 9
+    },
+    {
+      "price": 15299,
+      "amount": 54
+    },
+    {
+      "price": 15300,
+      "amount": 30
+    },
+    {
+      "price": 15300,
+      "amount": 21
+    },
+    {
+      "price": 15300,
+      "amount": 1000
+    },
+    {
+      "price": 15499,
+      "amount": 200
+    },
+    {
+      "price": 15500,
+      "amount": 8
+    },
+    {
+      "price": 15500,
+      "amount": 100
+    },
+    {
+      "price": 15550,
+      "amount": 6
+    },
+    {
+      "price": 15555,
+      "amount": 10
+    },
+    {
+      "price": 15669,
+      "amount": 104
+    },
+    {
+      "price": 15699,
+      "amount": 8
+    },
+    {
+      "price": 15998,
+      "amount": 349
+    },
+    {
+      "price": 15999,
+      "amount": 208
+    },
+    {
+      "price": 16000,
+      "amount": 206
+    },
+    {
+      "price": 16000,
+      "amount": 10
+    },
+    {
+      "price": 16000,
+      "amount": 1
+    },
+    {
+      "price": 16000,
+      "amount": 40
+    },
+    {
+      "price": 16000,
+      "amount": 1
+    },
+    {
+      "price": 16000,
+      "amount": 4
+    },
+    {
+      "price": 16000,
+      "amount": 28
+    },
+    {
+      "price": 16000,
+      "amount": 429
+    },
+    {
+      "price": 16000,
+      "amount": 159
+    },
+    {
+      "price": 16000,
+      "amount": 11
+    },
+    {
+      "price": 16095,
+      "amount": 28
+    },
+    {
+      "price": 16290,
+      "amount": 35
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 14993,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 14993,
+      "note": "cluster of 22"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 14993,
+      "note": "cluster of 36"
+    }
+  ]
+}

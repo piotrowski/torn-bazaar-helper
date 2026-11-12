@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 261,
+    "name": "Wolverine Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:15.109Z",
+  "listings": [
+    {
+      "price": 4200,
+      "amount": 18
+    },
+    {
+      "price": 4201,
+      "amount": 16
+    },
+    {
+      "price": 4700,
+      "amount": 18
+    },
+    {
+      "price": 4999,
+      "amount": 1
+    },
+    {
+      "price": 5000,
+      "amount": 4
+    },
+    {
+      "price": 5000,
+      "amount": 342
+    },
+    {
+      "price": 5000,
+      "amount": 12
+    },
+    {
+      "price": 5000,
+      "amount": 16
+    },
+    {
+      "price": 5000,
+      "amount": 1
+    },
+    {
+      "price": 5000,
+      "amount": 43
+    },
+    {
+      "price": 5000,
+      "amount": 34
+    },
+    {
+      "price": 5000,
+      "amount": 11
+    },
+    {
+      "price": 5040,
+      "amount": 54
+    },
+    {
+      "price": 5050,
+      "amount": 3
+    },
+    {
+      "price": 5100,
+      "amount": 1
+    },
+    {
+      "price": 5100,
+      "amount": 10
+    },
+    {
+      "price": 5100,
+      "amount": 21
+    },
+    {
+      "price": 5100,
+      "amount": 89
+    },
+    {
+      "price": 5149,
+      "amount": 1
+    },
+    {
+      "price": 5150,
+      "amount": 23
+    },
+    {
+      "price": 5200,
+      "amount": 60
+    },
+    {
+      "price": 5200,
+      "amount": 33
+    },
+    {
+      "price": 5200,
+      "amount": 27
+    },
+    {
+      "price": 5250,
+      "amount": 19
+    },
+    {
+      "price": 5250,
+      "amount": 75
+    },
+    {
+      "price": 5250,
+      "amount": 3
+    },
+    {
+      "price": 5300,
+      "amount": 1
+    },
+    {
+      "price": 5350,
+      "amount": 1
+    },
+    {
+      "price": 5378,
+      "amount": 20
+    },
+    {
+      "price": 5400,
+      "amount": 51
+    },
+    {
+      "price": 5400,
+      "amount": 221
+    },
+    {
+      "price": 5445,
+      "amount": 2
+    },
+    {
+      "price": 5472,
+      "amount": 16
+    },
+    {
+      "price": 5485,
+      "amount": 149
+    },
+    {
+      "price": 5500,
+      "amount": 35
+    },
+    {
+      "price": 5500,
+      "amount": 1
+    },
+    {
+      "price": 5500,
+      "amount": 1
+    },
+    {
+      "price": 5500,
+      "amount": 104
+    },
+    {
+      "price": 5500,
+      "amount": 4
+    },
+    {
+      "price": 5500,
+      "amount": 60
+    },
+    {
+      "price": 5500,
+      "amount": 1
+    },
+    {
+      "price": 5500,
+      "amount": 137
+    },
+    {
+      "price": 5500,
+      "amount": 1
+    },
+    {
+      "price": 5500,
+      "amount": 365
+    },
+    {
+      "price": 5500,
+      "amount": 539
+    },
+    {
+      "price": 5500,
+      "amount": 2
+    },
+    {
+      "price": 5555,
+      "amount": 11
+    },
+    {
+      "price": 5599,
+      "amount": 18
+    },
+    {
+      "price": 5600,
+      "amount": 621
+    },
+    {
+      "price": 5646,
+      "amount": 1283
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4199,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 4998,
+      "note": "cluster of 11"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 4998,
+      "note": "cluster of 20"
+    }
+  ]
+}

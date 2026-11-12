@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 271,
+    "name": "Ceibo Flower"
+  },
+  "fetchedAt": "2026-11-12T21:54:21.837Z",
+  "listings": [
+    {
+      "price": 31395,
+      "amount": 5
+    },
+    {
+      "price": 31399,
+      "amount": 5
+    },
+    {
+      "price": 31400,
+      "amount": 280
+    },
+    {
+      "price": 31499,
+      "amount": 40
+    },
+    {
+      "price": 31999,
+      "amount": 56
+    },
+    {
+      "price": 32000,
+      "amount": 50
+    },
+    {
+      "price": 32000,
+      "amount": 18
+    },
+    {
+      "price": 32094,
+      "amount": 18
+    },
+    {
+      "price": 32094,
+      "amount": 18
+    },
+    {
+      "price": 32099,
+      "amount": 10
+    },
+    {
+      "price": 32100,
+      "amount": 24
+    },
+    {
+      "price": 32100,
+      "amount": 26
+    },
+    {
+      "price": 32139,
+      "amount": 28
+    },
+    {
+      "price": 32139,
+      "amount": 27
+    },
+    {
+      "price": 32145,
+      "amount": 127
+    },
+    {
+      "price": 32150,
+      "amount": 12
+    },
+    {
+      "price": 32190,
+      "amount": 25
+    },
+    {
+      "price": 32200,
+      "amount": 15
+    },
+    {
+      "price": 32200,
+      "amount": 36
+    },
+    {
+      "price": 32200,
+      "amount": 13
+    },
+    {
+      "price": 32332,
+      "amount": 30
+    },
+    {
+      "price": 32333,
+      "amount": 1000
+    },
+    {
+      "price": 32500,
+      "amount": 108
+    },
+    {
+      "price": 32650,
+      "amount": 18
+    },
+    {
+      "price": 32700,
+      "amount": 75
+    },
+    {
+      "price": 32740,
+      "amount": 10
+    },
+    {
+      "price": 32800,
+      "amount": 100
+    },
+    {
+      "price": 32800,
+      "amount": 40
+    },
+    {
+      "price": 32880,
+      "amount": 34
+    },
+    {
+      "price": 32900,
+      "amount": 18
+    },
+    {
+      "price": 32999,
+      "amount": 99
+    },
+    {
+      "price": 33000,
+      "amount": 3
+    },
+    {
+      "price": 33000,
+      "amount": 221
+    },
+    {
+      "price": 33000,
+      "amount": 11
+    },
+    {
+      "price": 33290,
+      "amount": 196
+    },
+    {
+      "price": 33450,
+      "amount": 20
+    },
+    {
+      "price": 33500,
+      "amount": 8
+    },
+    {
+      "price": 33999,
+      "amount": 117
+    },
+    {
+      "price": 34000,
+      "amount": 27
+    },
+    {
+      "price": 34000,
+      "amount": 18
+    },
+    {
+      "price": 34000,
+      "amount": 6
+    },
+    {
+      "price": 34500,
+      "amount": 364
+    },
+    {
+      "price": 34532,
+      "amount": 3
+    },
+    {
+      "price": 34999,
+      "amount": 50
+    },
+    {
+      "price": 35000,
+      "amount": 316
+    },
+    {
+      "price": 35000,
+      "amount": 56
+    },
+    {
+      "price": 35000,
+      "amount": 36
+    },
+    {
+      "price": 35000,
+      "amount": 1
+    },
+    {
+      "price": 35000,
+      "amount": 17
+    },
+    {
+      "price": 35500,
+      "amount": 10
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 31394,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 31394,
+      "note": "cluster of 7"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 31394,
+      "note": "cluster of 30"
+    }
+  ]
+}

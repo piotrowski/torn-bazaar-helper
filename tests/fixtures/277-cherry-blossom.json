@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 277,
+    "name": "Cherry Blossom"
+  },
+  "fetchedAt": "2026-11-12T21:54:23.936Z",
+  "listings": [
+    {
+      "price": 39790,
+      "amount": 20
+    },
+    {
+      "price": 39790,
+      "amount": 28
+    },
+    {
+      "price": 39894,
+      "amount": 15
+    },
+    {
+      "price": 39895,
+      "amount": 23
+    },
+    {
+      "price": 40989,
+      "amount": 26
+    },
+    {
+      "price": 40990,
+      "amount": 26
+    },
+    {
+      "price": 41000,
+      "amount": 22
+    },
+    {
+      "price": 41000,
+      "amount": 10
+    },
+    {
+      "price": 41500,
+      "amount": 10
+    },
+    {
+      "price": 41548,
+      "amount": 20
+    },
+    {
+      "price": 41999,
+      "amount": 28
+    },
+    {
+      "price": 42000,
+      "amount": 50
+    },
+    {
+      "price": 42000,
+      "amount": 12
+    },
+    {
+      "price": 42000,
+      "amount": 51
+    },
+    {
+      "price": 42000,
+      "amount": 20
+    },
+    {
+      "price": 42000,
+      "amount": 11
+    },
+    {
+      "price": 42099,
+      "amount": 28
+    },
+    {
+      "price": 42249,
+      "amount": 5
+    },
+    {
+      "price": 42639,
+      "amount": 28
+    },
+    {
+      "price": 42998,
+      "amount": 66
+    },
+    {
+      "price": 42999,
+      "amount": 81
+    },
+    {
+      "price": 42999,
+      "amount": 200
+    },
+    {
+      "price": 43000,
+      "amount": 56
+    },
+    {
+      "price": 43000,
+      "amount": 10
+    },
+    {
+      "price": 43000,
+      "amount": 15
+    },
+    {
+      "price": 43000,
+      "amount": 293
+    },
+    {
+      "price": 43588,
+      "amount": 44
+    },
+    {
+      "price": 43750,
+      "amount": 12
+    },
+    {
+      "price": 43990,
+      "amount": 2
+    },
+    {
+      "price": 43997,
+      "amount": 1750
+    },
+    {
+      "price": 44000,
+      "amount": 77
+    },
+    {
+      "price": 44444,
+      "amount": 367
+    },
+    {
+      "price": 44499,
+      "amount": 37
+    },
+    {
+      "price": 44999,
+      "amount": 18
+    },
+    {
+      "price": 45000,
+      "amount": 108
+    },
+    {
+      "price": 45000,
+      "amount": 7
+    },
+    {
+      "price": 45000,
+      "amount": 28
+    },
+    {
+      "price": 45000,
+      "amount": 19
+    },
+    {
+      "price": 45000,
+      "amount": 13
+    },
+    {
+      "price": 45000,
+      "amount": 2
+    },
+    {
+      "price": 45000,
+      "amount": 582
+    },
+    {
+      "price": 45000,
+      "amount": 3
+    },
+    {
+      "price": 45220,
+      "amount": 3
+    },
+    {
+      "price": 46000,
+      "amount": 100
+    },
+    {
+      "price": 46699,
+      "amount": 36
+    },
+    {
+      "price": 46989,
+      "amount": 100
+    },
+    {
+      "price": 46999,
+      "amount": 11
+    },
+    {
+      "price": 46999,
+      "amount": 46
+    },
+    {
+      "price": 47000,
+      "amount": 16
+    },
+    {
+      "price": 49980,
+      "amount": 469
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 39789,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 39789,
+      "note": "cluster of 4"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 39789,
+      "note": "cluster of 10"
+    }
+  ]
+}

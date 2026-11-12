@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 281,
+    "name": "Lion Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:17.388Z",
+  "listings": [
+    {
+      "price": 60000,
+      "amount": 1
+    },
+    {
+      "price": 60000,
+      "amount": 10
+    },
+    {
+      "price": 60000,
+      "amount": 12
+    },
+    {
+      "price": 60000,
+      "amount": 24
+    },
+    {
+      "price": 60000,
+      "amount": 5
+    },
+    {
+      "price": 60000,
+      "amount": 10
+    },
+    {
+      "price": 60006,
+      "amount": 1
+    },
+    {
+      "price": 60100,
+      "amount": 1
+    },
+    {
+      "price": 60400,
+      "amount": 5
+    },
+    {
+      "price": 61000,
+      "amount": 5
+    },
+    {
+      "price": 61000,
+      "amount": 6
+    },
+    {
+      "price": 61987,
+      "amount": 3605
+    },
+    {
+      "price": 61990,
+      "amount": 500
+    },
+    {
+      "price": 61998,
+      "amount": 103
+    },
+    {
+      "price": 62000,
+      "amount": 3749
+    },
+    {
+      "price": 62000,
+      "amount": 274
+    },
+    {
+      "price": 62997,
+      "amount": 27
+    },
+    {
+      "price": 63000,
+      "amount": 27
+    },
+    {
+      "price": 63000,
+      "amount": 300
+    },
+    {
+      "price": 63998,
+      "amount": 14
+    },
+    {
+      "price": 64000,
+      "amount": 100
+    },
+    {
+      "price": 64000,
+      "amount": 73
+    },
+    {
+      "price": 64000,
+      "amount": 27
+    },
+    {
+      "price": 64499,
+      "amount": 31
+    },
+    {
+      "price": 64999,
+      "amount": 11
+    },
+    {
+      "price": 65000,
+      "amount": 34
+    },
+    {
+      "price": 65000,
+      "amount": 7
+    },
+    {
+      "price": 65000,
+      "amount": 110
+    },
+    {
+      "price": 65000,
+      "amount": 1
+    },
+    {
+      "price": 65000,
+      "amount": 1
+    },
+    {
+      "price": 65000,
+      "amount": 2
+    },
+    {
+      "price": 65000,
+      "amount": 704
+    },
+    {
+      "price": 65000,
+      "amount": 30
+    },
+    {
+      "price": 65500,
+      "amount": 3219
+    },
+    {
+      "price": 65750,
+      "amount": 623
+    },
+    {
+      "price": 66666,
+      "amount": 71
+    },
+    {
+      "price": 67000,
+      "amount": 12
+    },
+    {
+      "price": 68000,
+      "amount": 1
+    },
+    {
+      "price": 68888,
+      "amount": 29
+    },
+    {
+      "price": 69997,
+      "amount": 209
+    },
+    {
+      "price": 69999,
+      "amount": 10
+    },
+    {
+      "price": 70000,
+      "amount": 10
+    },
+    {
+      "price": 70000,
+      "amount": 15
+    },
+    {
+      "price": 70000,
+      "amount": 198
+    },
+    {
+      "price": 70295,
+      "amount": 1
+    },
+    {
+      "price": 70999,
+      "amount": 2
+    },
+    {
+      "price": 71111,
+      "amount": 199
+    },
+    {
+      "price": 71438,
+      "amount": 25
+    },
+    {
+      "price": 71500,
+      "amount": 12
+    },
+    {
+      "price": 71900,
+      "amount": 847
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 59999,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 59999,
+      "note": "cluster of 11"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 59999,
+      "note": "cluster of 19"
+    }
+  ]
+}

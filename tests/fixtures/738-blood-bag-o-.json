@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 738,
+    "name": "Blood Bag : O+"
+  },
+  "fetchedAt": "2026-11-12T21:51:16.175Z",
+  "listings": [
+    {
+      "price": 19700,
+      "amount": 25
+    },
+    {
+      "price": 20700,
+      "amount": 7
+    },
+    {
+      "price": 20865,
+      "amount": 30
+    },
+    {
+      "price": 20870,
+      "amount": 2043
+    },
+    {
+      "price": 20888,
+      "amount": 4734
+    },
+    {
+      "price": 20890,
+      "amount": 396
+    },
+    {
+      "price": 20995,
+      "amount": 182
+    },
+    {
+      "price": 21000,
+      "amount": 133
+    },
+    {
+      "price": 21000,
+      "amount": 591
+    },
+    {
+      "price": 21098,
+      "amount": 76
+    },
+    {
+      "price": 21457,
+      "amount": 71
+    },
+    {
+      "price": 21495,
+      "amount": 1
+    },
+    {
+      "price": 21994,
+      "amount": 2
+    },
+    {
+      "price": 21999,
+      "amount": 20
+    },
+    {
+      "price": 22000,
+      "amount": 20
+    },
+    {
+      "price": 22700,
+      "amount": 1225
+    },
+    {
+      "price": 23449,
+      "amount": 1018
+    },
+    {
+      "price": 24799,
+      "amount": 417
+    },
+    {
+      "price": 24888,
+      "amount": 5
+    },
+    {
+      "price": 24899,
+      "amount": 7768
+    },
+    {
+      "price": 24899,
+      "amount": 30
+    },
+    {
+      "price": 24899,
+      "amount": 5
+    },
+    {
+      "price": 25000,
+      "amount": 256
+    },
+    {
+      "price": 25000,
+      "amount": 50
+    },
+    {
+      "price": 26000,
+      "amount": 3
+    },
+    {
+      "price": 26000,
+      "amount": 300
+    },
+    {
+      "price": 29000,
+      "amount": 900
+    },
+    {
+      "price": 31755,
+      "amount": 1
+    },
+    {
+      "price": 33333,
+      "amount": 158
+    },
+    {
+      "price": 39990,
+      "amount": 10
+    },
+    {
+      "price": 41000,
+      "amount": 50
+    },
+    {
+      "price": 50000,
+      "amount": 2
+    },
+    {
+      "price": 50000,
+      "amount": 1
+    },
+    {
+      "price": 50000,
+      "amount": 3
+    },
+    {
+      "price": 50000,
+      "amount": 1
+    },
+    {
+      "price": 50000,
+      "amount": 1
+    },
+    {
+      "price": 60000,
+      "amount": 1
+    },
+    {
+      "price": 65000,
+      "amount": 1
+    },
+    {
+      "price": 70000,
+      "amount": 4
+    },
+    {
+      "price": 75000,
+      "amount": 5
+    },
+    {
+      "price": 79999,
+      "amount": 500
+    },
+    {
+      "price": 80000,
+      "amount": 1
+    },
+    {
+      "price": 80000,
+      "amount": 9
+    },
+    {
+      "price": 100000,
+      "amount": 1
+    },
+    {
+      "price": 100000,
+      "amount": 3
+    },
+    {
+      "price": 100000,
+      "amount": 2
+    },
+    {
+      "price": 100000,
+      "amount": 1
+    },
+    {
+      "price": 149999,
+      "amount": 110
+    },
+    {
+      "price": 166570,
+      "amount": 3
+    },
+    {
+      "price": 179503,
+      "amount": 986
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 19699,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 20699,
+      "note": "cluster of 9"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 20699,
+      "note": "cluster of 11"
+    }
+  ]
+}

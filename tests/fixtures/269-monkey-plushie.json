@@ -1,0 +1,247 @@
+{
+  "item": {
+    "id": 269,
+    "name": "Monkey Plushie"
+  },
+  "fetchedAt": "2026-11-12T21:54:16.631Z",
+  "listings": [
+    {
+      "price": 31900,
+      "amount": 13
+    },
+    {
+      "price": 32000,
+      "amount": 28
+    },
+    {
+      "price": 32695,
+      "amount": 18
+    },
+    {
+      "price": 32699,
+      "amount": 126
+    },
+    {
+      "price": 32921,
+      "amount": 61
+    },
+    {
+      "price": 32962,
+      "amount": 36
+    },
+    {
+      "price": 32987,
+      "amount": 15
+    },
+    {
+      "price": 32988,
+      "amount": 716
+    },
+    {
+      "price": 33000,
+      "amount": 26
+    },
+    {
+      "price": 33000,
+      "amount": 39
+    },
+    {
+      "price": 33000,
+      "amount": 1
+    },
+    {
+      "price": 33000,
+      "amount": 90
+    },
+    {
+      "price": 33000,
+      "amount": 10
+    },
+    {
+      "price": 33050,
+      "amount": 18
+    },
+    {
+      "price": 33100,
+      "amount": 29
+    },
+    {
+      "price": 33230,
+      "amount": 1
+    },
+    {
+      "price": 33240,
+      "amount": 33
+    },
+    {
+      "price": 33300,
+      "amount": 1
+    },
+    {
+      "price": 33333,
+      "amount": 5
+    },
+    {
+      "price": 33333,
+      "amount": 4
+    },
+    {
+      "price": 33369,
+      "amount": 25
+    },
+    {
+      "price": 33400,
+      "amount": 70
+    },
+    {
+      "price": 33500,
+      "amount": 18
+    },
+    {
+      "price": 33500,
+      "amount": 21
+    },
+    {
+      "price": 33500,
+      "amount": 65
+    },
+    {
+      "price": 33500,
+      "amount": 96
+    },
+    {
+      "price": 33689,
+      "amount": 58
+    },
+    {
+      "price": 33750,
+      "amount": 16
+    },
+    {
+      "price": 33790,
+      "amount": 18
+    },
+    {
+      "price": 33999,
+      "amount": 26
+    },
+    {
+      "price": 34000,
+      "amount": 1
+    },
+    {
+      "price": 34000,
+      "amount": 7
+    },
+    {
+      "price": 34000,
+      "amount": 84
+    },
+    {
+      "price": 34444,
+      "amount": 200
+    },
+    {
+      "price": 34444,
+      "amount": 1396
+    },
+    {
+      "price": 34600,
+      "amount": 10
+    },
+    {
+      "price": 34795,
+      "amount": 1
+    },
+    {
+      "price": 34890,
+      "amount": 292
+    },
+    {
+      "price": 34999,
+      "amount": 27
+    },
+    {
+      "price": 35000,
+      "amount": 100
+    },
+    {
+      "price": 35000,
+      "amount": 22
+    },
+    {
+      "price": 35000,
+      "amount": 11
+    },
+    {
+      "price": 35000,
+      "amount": 1
+    },
+    {
+      "price": 35000,
+      "amount": 48
+    },
+    {
+      "price": 35148,
+      "amount": 1
+    },
+    {
+      "price": 35500,
+      "amount": 26
+    },
+    {
+      "price": 35998,
+      "amount": 84
+    },
+    {
+      "price": 36000,
+      "amount": 18
+    },
+    {
+      "price": 36500,
+      "amount": 100
+    },
+    {
+      "price": 36666,
+      "amount": 18
+    }
+  ],
+  "cases": [
+    {
+      "name": "lowest, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "lowest",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 31899,
+      "note": "lowest"
+    },
+    {
+      "name": "cluster 3 within 2%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 2,
+        "clusterMinListings": 3
+      },
+      "expected": 32694,
+      "note": "cluster of 18"
+    },
+    {
+      "name": "cluster 3 within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinListings": 3
+      },
+      "expected": 31899,
+      "note": "cluster of 22"
+    }
+  ]
+}
