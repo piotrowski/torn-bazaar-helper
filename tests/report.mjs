@@ -1,15 +1,14 @@
 // Prints what the script would set for every saved fixture.
 // Settings come from the environment (the Makefile passes them):
-//   CLUSTER_SIZE (default 3), CLUSTER_UNITS (default 15, 0 = off), CLUSTER_PCT (default 5), UNDERCUT (default 1), UNDERCUT_UNIT ($ or %, default $)
+//   CLUSTER_UNITS (default 15), CLUSTER_PCT (default 5), UNDERCUT (default 1), UNDERCUT_UNIT ($ or %, default $)
 import { readdirSync, readFileSync } from 'node:fs';
 import { computePrice } from './load-pricing.mjs';
 
-const size = Number(process.env.CLUSTER_SIZE || 3);
 const pct = Number(process.env.CLUSTER_PCT || 5);
-const units = Number(process.env.CLUSTER_UNITS ?? 15);
+const units = Number(process.env.CLUSTER_UNITS || 15);
 const undercut = Number(process.env.UNDERCUT || 1);
 const unit = process.env.UNDERCUT_UNIT === '%' ? '%' : '$';
-const base = { undercut, undercutUnit: unit, clusterMinListings: size, clusterMinUnits: units, clusterTolerance: pct };
+const base = { undercut, undercutUnit: unit, clusterMinUnits: units, clusterTolerance: pct };
 
 const dir = new URL('./fixtures/', import.meta.url);
 const fixtures = readdirSync(dir)
@@ -19,7 +18,7 @@ const fixtures = readdirSync(dir)
 
 const num = (n) => n.toLocaleString('en-US');
 const clusterHead = 'Cluster';
-const rule = `${size} listings${units > 0 ? ` or ${num(units)} items` : ''} within ${pct}%`;
+const rule = `at least ${num(units)} items within ${pct}%`;
 
 const rows = fixtures.map((fx) => {
   const lowest = computePrice(fx.listings, { ...base, mode: 'lowest' });
@@ -33,7 +32,7 @@ const rows = fixtures.map((fx) => {
   ];
 });
 
-const head = ['Item', 'Cheapest listings', 'Lowest', clusterHead, 'Note'];
+const head = ['Item', 'Cheapest prices (items for sale)', 'Lowest', clusterHead, 'Note'];
 const rightAligned = [false, false, true, true, false];
 const widths = head.map((h, i) => Math.max(h.length, ...rows.map((r) => r[i].length)));
 const line = (cells) =>

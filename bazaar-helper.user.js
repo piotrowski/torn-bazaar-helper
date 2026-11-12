@@ -24,11 +24,11 @@
     undercutUnit: '$', // '$' or '%'
     mode: 'lowest', // 'lowest' or 'cluster'
     clusterTolerance: 2, // % spread that still counts as "the same price"
-    clusterMinListings: 3, // listings needed to call it a cluster...
-    clusterMinUnits: 15, // ...or this many items in total (0 = count listings only)
+    clusterMinUnits: 15, // items needed around one price to call it a cluster
     warnNpc: true, // warn when a price is below what NPC shops pay
     dropWarnPercent: 20, // warn when a new price is this much below the previous one (0 = off)
     cacheMinutes: 30, // how long fetched market prices are reused (0 = always fetch)
+    showMvButton: true, // show the "Show above MV" button
     maxCallsPerMinute: 20, // share of Torn's 100 calls/minute this script may use
   };
 
@@ -99,11 +99,16 @@
     });
   }
 
-  // Returns { listings, cachedAt } where cachedAt is null for a fresh fetch.
+  // Returns { listings, dataTime }. dataTime is when Torn took the market
+  // snapshot (ms). Torn only refreshes it about once an hour, so the data
+  // can be old even when it was fetched a second ago.
   async function fetchListings(itemId, forceRefresh = false) {
     const maxAge = settings.cacheMinutes * 60_000;
     const hit = !forceRefresh && cacheGet('priceCache', itemId, maxAge);
-    if (hit) return { listings: hit.value, cachedAt: hit.time };
+    if (hit) {
+      // Entries saved by older versions were a bare array of listings.
+      return Array.isArray(hit.value) ? { listings: hit.value, dataTime: hit.time } : hit.value;
+    }
 
     const data = await apiGet(`market/${itemId}/itemmarket`);
     const listings = (data.itemmarket?.listings ?? [])
@@ -111,32 +116,38 @@
       .filter((l) => l.price > 0)
       .sort((a, b) => a.price - b.price)
       .slice(0, 50);
-    if (maxAge > 0) cacheSet('priceCache', itemId, listings, maxAge);
-    return { listings, cachedAt: null };
+    const result = { listings, dataTime: Number(data.itemmarket?.cache_timestamp) * 1000 || Date.now() };
+    if (maxAge > 0) cacheSet('priceCache', itemId, result, maxAge);
+    return result;
   }
 
-  // What NPC shops pay for the item (0 if they do not buy it). These prices
-  // do not move, so they are remembered for a day.
-  const NPC_CACHE_MS = 24 * 60 * 60_000;
-  const npcInFlight = new Map(); // itemId -> Promise<number>
+  // Item facts from Torn: what NPC shops pay (sell, 0 if they do not buy it)
+  // and the market value (mv). One call can cover many items. Remembered for
+  // six hours, since market value only changes daily.
+  const INFO_CACHE_MS = 6 * 60 * 60_000;
 
-  function fetchNpcSellPrice(itemId) {
-    const hit = cacheGet('npcCache', itemId, NPC_CACHE_MS);
-    if (hit) return Promise.resolve(hit.value);
-    if (!npcInFlight.has(itemId)) {
-      const p = apiGet(`torn/${itemId}/items`)
-        .then((data) => {
-          const items = Array.isArray(data.items) ? data.items : Object.values(data.items ?? {});
-          const it = items.find((i) => Number(i.id) === itemId) ?? items[0];
-          const price = Number(it?.value?.sell_price ?? it?.sell_price) || 0;
-          cacheSet('npcCache', itemId, price, NPC_CACHE_MS);
-          return price;
-        })
-        .finally(() => npcInFlight.delete(itemId));
-      npcInFlight.set(itemId, p);
+  // Returns Map<itemId, { sell, mv }>.
+  async function fetchItemInfos(ids) {
+    const out = new Map();
+    const missing = [];
+    for (const id of new Set(ids)) {
+      const hit = cacheGet('itemInfoCache', id, INFO_CACHE_MS);
+      if (hit) out.set(id, hit.value);
+      else missing.push(id);
     }
-    return npcInFlight.get(itemId);
+    for (let i = 0; i < missing.length; i += 50) {
+      const data = await apiGet(`torn/${missing.slice(i, i + 50).join(',')}/items`);
+      const items = Array.isArray(data.items) ? data.items : Object.values(data.items ?? {});
+      for (const it of items) {
+        const info = { sell: Number(it?.value?.sell_price) || 0, mv: Number(it?.value?.market_price) || 0 };
+        cacheSet('itemInfoCache', Number(it.id), info, INFO_CACHE_MS);
+        out.set(Number(it.id), info);
+      }
+    }
+    return out;
   }
+
+  const fetchNpcSellPrice = (itemId) => fetchItemInfos([itemId]).then((m) => m.get(itemId)?.sell ?? 0);
 
   // <pricing> (tests/load-pricing.mjs extracts everything up to </pricing>; keep it self-contained)
   // Returns { base, price, note } or throws.
@@ -148,22 +159,17 @@
 
     if (s.mode === 'cluster') {
       const tol = 1 + Math.max(0, Number(s.clusterTolerance)) / 100;
-      const need = Math.max(2, Number(s.clusterMinListings));
-      const needUnits = Math.max(0, Number(s.clusterMinUnits) || 0); // 0 = ignore amounts
+      const needUnits = Math.max(1, Number(s.clusterMinUnits) || 1);
       let found = false;
-      // A cluster is a group of listings within the tolerance of its cheapest
-      // one that has enough listings, or enough items in total.
+      // A cluster is the first price where the items for sale within the
+      // tolerance of that price add up to at least needUnits.
       for (let i = 0; i < listings.length && !found; i++) {
         const limit = listings[i].price * tol;
-        let count = 0;
         let units = 0;
-        for (let j = i; j < listings.length && listings[j].price <= limit; j++) {
-          count++;
-          units += listings[j].amount || 1;
-        }
-        if (count >= need || (needUnits > 0 && units >= needUnits)) {
+        for (let j = i; j < listings.length && listings[j].price <= limit; j++) units += listings[j].amount || 1;
+        if (units >= needUnits) {
           base = listings[i].price;
-          note = `cluster of ${count} listing${count === 1 ? '' : 's'}, ${units.toLocaleString('en-US')} items`;
+          note = `cluster of ${units.toLocaleString('en-US')} items`;
           found = true;
         }
       }
@@ -258,25 +264,51 @@
     return b;
   }
 
+  // Field colours. Torn removes rows from the page as you scroll and builds
+  // them again later, which would lose a class set on the input. So the
+  // colour is remembered per item here and put back by scan().
+  const MARK_CLASSES = ['tbh-warn', 'tbh-up', 'tbh-down'];
+  const marks = new Map(); // itemId -> one of MARK_CLASSES
+
+  const itemIdOf = (priceInput) => {
+    const row = findRow(priceInput);
+    return row ? getItemId(row) : null;
+  };
+
+  function paintMark(priceInput, mark) {
+    for (const c of MARK_CLASSES) priceInput.classList.toggle(c, c === mark);
+  }
+
+  function setMark(priceInput, mark) {
+    paintMark(priceInput, mark);
+    const itemId = itemIdOf(priceInput);
+    if (!itemId) return;
+    if (mark) marks.set(itemId, mark);
+    else marks.delete(itemId);
+  }
+
   // Prices one field. Returns { status, message } where status is
   // 'ok', 'drop' (filled, but far below the previous price), 'npc' (not
-  // filled: NPC shops pay more) or 'error'. Throws only on API failures.
+  // filled: NPC shops pay more) or 'error'. An 'ok' result also says whether the
+  // price went 'up' or 'down'. Throws only on API failures.
   async function priceOne(priceInput, forceRefresh) {
     const row = findRow(priceInput);
     const itemId = row && getItemId(row);
     if (!itemId) return { status: 'error', message: 'Could not work out which item this row is' };
 
-    const { listings, cachedAt } = await fetchListings(itemId, forceRefresh);
+    const { listings, dataTime } = await fetchListings(itemId, forceRefresh);
     const { base, price, note } = computePrice(listings, settings);
-    const age = cachedAt ? ` · price from ${Math.max(1, Math.round((Date.now() - cachedAt) / 60_000))} min ago` : '';
+    const ageMin = Math.max(0, Math.round((Date.now() - dataTime) / 60_000));
+    const age = ` · market data from ${ageMin} min ago`;
 
     if (settings.warnNpc) {
       const npc = await fetchNpcSellPrice(itemId).catch(() => 0);
       if (price < npc) {
-        priceInput.classList.add('tbh-warn');
+        setMark(priceInput, 'tbh-warn');
         return {
           status: 'npc',
-          message: `Not priced: ${fmt(price)} is below the ${fmt(npc)} NPC shops pay. Sell it to a shop instead.`,
+          ageMin,
+          message: `Not priced: ${fmt(price)} is below the ${fmt(npc)} NPC shops pay. Sell it to a shop instead.${age}`,
         };
       }
     }
@@ -285,13 +317,17 @@
     const drop = bigDrop(previous, price);
     setInputValue(priceInput, price);
     if (drop) {
-      priceInput.classList.add('tbh-warn');
+      setMark(priceInput, 'tbh-warn');
       return {
         status: 'drop',
+        ageMin,
         message: `Warning: ${fmt(price)} is ${Math.round(drop)}% below the previous ${fmt(previous)}. Check before saving.${age}`,
       };
     }
-    return { status: 'ok', message: `${fmt(base)} (${note}) → ${fmt(price)}${age}` };
+    // Colour by direction; a big drop has its red outline instead.
+    const direction = previous > 0 && price !== previous ? (price > previous ? 'up' : 'down') : null;
+    if (direction) setMark(priceInput, direction === 'up' ? 'tbh-up' : 'tbh-down');
+    return { status: 'ok', direction, ageMin, message: `${fmt(base)} (${note}) → ${fmt(price)}${age}` };
   }
 
   function requireApiKey() {
@@ -346,7 +382,8 @@
 
     bulkRunning = true;
     bulkStop = false;
-    const count = { ok: 0, drop: 0, npc: 0, error: 0 };
+    const count = { ok: 0, drop: 0, npc: 0, error: 0, up: 0, down: 0 };
+    let oldestMin = 0;
     let done = 0;
     let lastError = '';
     try {
@@ -360,9 +397,11 @@
           if (bulkStop) break;
           btn.textContent = `${progress} (click to stop)`;
           try {
-            const { status, message } = await priceOne(input, forceRefresh);
-            count[status]++;
-            if (status === 'error') lastError = message;
+            const r = await priceOne(input, forceRefresh);
+            count[r.status]++;
+            if (r.status === 'error') lastError = r.message;
+            if (r.ageMin > oldestMin) oldestMin = r.ageMin;
+            if (r.direction) count[r.direction]++;
           } catch (err) {
             count.error++;
             lastError = err.message;
@@ -377,17 +416,96 @@
 
     const parts = [`${count.ok + count.drop} of ${inputs.length} prices updated`];
     if (bulkStop) parts[0] = `Stopped: ${parts[0]}`;
-    if (count.drop) parts.push(`${count.drop} dropped ${settings.dropWarnPercent}% or more`);
-    if (count.npc) parts.push(`${count.npc} not priced (NPC shops pay more)`);
+    if (count.up) parts.push(`${count.up} went up (green)`);
+    if (count.down) parts.push(`${count.down} went down (orange)`);
+    if (count.drop) parts.push(`${count.drop} dropped ${settings.dropWarnPercent}% or more (red)`);
+    if (count.npc) parts.push(`${count.npc} not priced, NPC shops pay more (red)`);
     if (count.error) parts.push(`${count.error} failed (${lastError})`);
-    const flagged = count.drop + count.npc;
-    if (flagged) parts.push('flagged fields are outlined in red');
-    toast(parts.join(' · ') + '. Nothing is saved until you press save.', flagged + count.error > 0, 10_000);
+    parts.push(`market data up to ${oldestMin} min old`);
+    // Stays on screen until clicked.
+    toast(parts.join(' · ') + '. Nothing is saved until you press save.', count.drop + count.npc + count.error > 0, 0);
+  }
+
+  // ---- "Show above MV": colour prices that are above Torn's market value ----
+
+  const MV_SHOW = 'Show above MV';
+  const MV_HIDE = 'Hide above MV';
+  let mvShown = false;
+
+  function hideAboveMarketValue(btn) {
+    for (const input of document.querySelectorAll(PRICE_INPUT)) {
+      input.classList.remove('tbh-mv');
+      if (input.title.startsWith('Market value ')) input.title = '';
+    }
+    mvShown = false;
+    btn.textContent = MV_SHOW;
+  }
+
+  const mvInfo = new Map(); // itemId -> market value, for rows seen while the blue is showing
+  let mvBusy = false;
+
+  // Colours every loaded price field. Called again by scan() while the blue
+  // is showing, so rows that appear on scroll get coloured too.
+  // Returns { above, total } or null if another run is in progress.
+  async function paintAboveMarketValue() {
+    if (mvBusy) return null;
+    mvBusy = true;
+    try {
+      const rows = [];
+      for (const input of document.querySelectorAll(PRICE_INPUT)) {
+        const itemId = itemIdOf(input);
+        if (itemId) rows.push({ input, itemId });
+      }
+      const unknown = [...new Set(rows.map((r) => r.itemId).filter((id) => !mvInfo.has(id)))];
+      if (unknown.length) {
+        const infos = await fetchItemInfos(unknown);
+        for (const id of unknown) mvInfo.set(id, infos.get(id)?.mv || 0);
+      }
+      let above = 0;
+      let total = 0;
+      for (const { input, itemId } of rows) {
+        const price = parsePrice(input);
+        const mv = mvInfo.get(itemId);
+        const isAbove = Boolean(price && mv && price > mv);
+        input.classList.toggle('tbh-mv', isAbove);
+        if (!price || !mv) continue;
+        total++;
+        if (isAbove) above++;
+        const diff = Math.round((price / mv - 1) * 100);
+        input.title = `Market value ${fmt(mv)}; this price is ${Math.abs(diff)}% ${diff >= 0 ? 'above' : 'below'} it`;
+      }
+      return { above, total };
+    } finally {
+      mvBusy = false;
+    }
+  }
+
+  async function showAboveMarketValue(btn) {
+    if (mvShown) return hideAboveMarketValue(btn);
+    if (!requireApiKey()) return;
+    btn.disabled = true;
+    try {
+      const result = await paintAboveMarketValue();
+      if (!result) return;
+      if (!result.total) return toast('No prices filled in on this page', true);
+      mvShown = true;
+      btn.textContent = MV_HIDE;
+      toast(
+        `${result.above} of ${result.total} prices on screen are above market value (shown in blue). Hover a price to see its market value.`,
+        false,
+        6000
+      );
+    } catch (err) {
+      toast(err.message, true);
+    } finally {
+      btn.disabled = false;
+    }
   }
 
   // Runs when a price field changes (typed by hand or filled by the script).
   async function checkNpcPrice(priceInput) {
-    priceInput.classList.remove('tbh-warn');
+    setMark(priceInput, null);
+    priceInput.classList.remove('tbh-mv');
     const price = parsePrice(priceInput);
 
     // Hand-typed price: compare with what the field held when it got focus.
@@ -395,7 +513,7 @@
       const previous = Number(priceInput.dataset.tbhPrev) || 0;
       const drop = bigDrop(previous, price);
       if (drop) {
-        priceInput.classList.add('tbh-warn');
+        setMark(priceInput, 'tbh-warn');
         toast(`Warning: ${fmt(price)} is ${Math.round(drop)}% below the previous ${fmt(previous)}.`, true);
       }
     }
@@ -407,7 +525,7 @@
 
     const npc = await fetchNpcSellPrice(itemId).catch(() => 0);
     if (price < npc && Number(priceInput.value.replace(/[^\d]/g, '')) === price) {
-      priceInput.classList.add('tbh-warn');
+      setMark(priceInput, 'tbh-warn');
       toast(`Warning: ${fmt(price)} is below the ${fmt(npc)} NPC shops pay for this item.`, true);
     }
   }
@@ -423,9 +541,12 @@
     const hash = location.hash;
     const onAdd = hash.includes('add');
     allBtn.style.display = hash.includes('manage') ? '' : 'none';
+    mvBtn.style.display = settings.showMvButton && (onAdd || hash.includes('manage')) ? '' : 'none';
+    if (mvShown) paintAboveMarketValue().catch(() => {}); // colour rows that appeared on scroll
     if (!onAdd && !hash.includes('manage')) return;
 
     for (const priceInput of document.querySelectorAll(PRICE_INPUT)) {
+      if (marks.size) paintMark(priceInput, marks.get(itemIdOf(priceInput)) || null);
       const group = priceInput.closest('.input-money-group');
       const priceHost = group || priceInput.parentElement;
       if (!priceHost.querySelector('.tbh-price')) {
@@ -469,6 +590,9 @@
     .tbh-host { position: relative; }
     .tbh-overlay { position: absolute; right: 3px; top: 50%; transform: translateY(-50%); margin: 0; z-index: 2; }
     input.tbh-warn { outline: 2px solid #d33 !important; outline-offset: -2px; }
+    input.tbh-up { background: #c9efc0 !important; color: #111 !important; }
+    input.tbh-down { background: #ffd9a8 !important; color: #111 !important; }
+    input.tbh-mv { background: #bcdcff !important; color: #111 !important; }
     #tbh-panel label.tbh-check { display: flex; align-items: center; gap: 8px; margin-top: 14px; color: #ddd; cursor: pointer; }
     #tbh-panel label.tbh-check input { width: 16px; height: 16px; flex: none; margin: 0; }
 
@@ -486,6 +610,7 @@
       color: #fff; background: #2e2e2e; border: 1px solid #555;
       box-shadow: 0 2px 8px rgba(0,0,0,.5); pointer-events: none;
     }
+    #tbh-toast.tbh-sticky { pointer-events: auto; cursor: pointer; max-width: min(700px, calc(100vw - 32px)); }
     #tbh-toast.tbh-error { background: #7a2222; border-color: #a33; }
 
     #tbh-backdrop {
@@ -493,7 +618,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     #tbh-panel {
-      width: 320px; max-width: calc(100vw - 32px); box-sizing: border-box; padding: 16px;
+      width: 352px; max-width: calc(100vw - 32px); box-sizing: border-box; padding: 16px;
       font: 13px Arial, sans-serif; color: #ddd; background: #2e2e2e;
       border: 1px solid #555; border-radius: 6px;
     }
@@ -508,6 +633,11 @@
     #tbh-panel .tbh-hint { margin-top: 4px; font-size: 11px; color: #888; }
     #tbh-panel .tbh-actions { display: flex; justify-content: flex-end; gap: 6px; margin-top: 16px; }
     #tbh-panel .tbh-actions .tbh-btn { height: 28px; padding: 0 12px; font-size: 12px; margin: 0; }
+    #tbh-panel .tbh-advanced { margin-top: 14px; padding-top: 10px; border-top: 1px solid #444; }
+    #tbh-panel .tbh-advanced summary { cursor: pointer; color: #ddd; font-weight: bold; user-select: none; }
+    #tbh-panel .tbh-credit { margin-top: 12px; padding-top: 10px; border-top: 1px solid #444; font-size: 11px; color: #888; text-align: center; }
+    #tbh-panel .tbh-credit a { color: #8fc46a; text-decoration: none; }
+    #tbh-panel .tbh-credit a:hover { text-decoration: underline; }
     #tbh-panel .tbh-secondary { background: #555; border-color: #444; }
   `);
 
@@ -534,18 +664,22 @@
   }
 
   let toastTimer;
+  // ms = 0 keeps the message on screen until it is clicked.
   function toast(message, isError = false, ms = isError ? 5000 : 3000) {
     let el = document.getElementById('tbh-toast');
     if (!el) {
       el = document.createElement('div');
       el.id = 'tbh-toast';
+      el.addEventListener('click', () => (el.style.display = 'none'));
       document.body.appendChild(el);
     }
-    el.textContent = message;
+    const sticky = ms === 0;
+    el.textContent = sticky ? `${message} (click to close)` : message;
     el.classList.toggle('tbh-error', isError);
+    el.classList.toggle('tbh-sticky', sticky);
     el.style.display = '';
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => (el.style.display = 'none'), ms);
+    if (!sticky) toastTimer = setTimeout(() => (el.style.display = 'none'), ms);
   }
 
   function openSettings() {
@@ -570,22 +704,21 @@
 
         <label for="tbh-mode">Reference price</label>
         <select id="tbh-mode">
-          <option value="lowest">Lowest listing</option>
-          <option value="cluster">Lowest cluster of listings</option>
+          <option value="lowest">Lowest price</option>
+          <option value="cluster">Lowest cluster of items</option>
         </select>
 
         <div id="tbh-cluster">
-          <label for="tbh-min">Cluster: at least this many listings</label>
-          <input id="tbh-min" type="number" min="2" step="1">
-          <label for="tbh-units">Cluster: or at least this many items in total</label>
-          <input id="tbh-units" type="number" min="0" step="1">
-          <div class="tbh-hint">A big enough offer counts as a cluster on its own. 0 counts listings only.</div>
-          <label for="tbh-tol">Cluster: within this % of each other</label>
+          <label for="tbh-units">Cluster: at least this many items</label>
+          <input id="tbh-units" type="number" min="1" step="1">
+          <label for="tbh-tol">Cluster: priced within this % of each other</label>
           <input id="tbh-tol" type="number" min="0" step="any">
         </div>
 
         <label class="tbh-check"><input id="tbh-npc" type="checkbox"> Warn when a price is below the NPC shop price</label>
 
+        <details class="tbh-advanced">
+        <summary>Advanced settings</summary>
         <label for="tbh-drop">Warn when a new price is lower by at least (%)</label>
         <input id="tbh-drop" type="number" min="0" max="100" step="any">
         <div class="tbh-hint">Compared with the price already in the field. 0 turns this off.</div>
@@ -598,10 +731,14 @@
         <input id="tbh-calls" type="number" min="1" max="100" step="1">
         <div class="tbh-hint">Torn allows 100 per minute across all your scripts and keys.</div>
 
+        <label class="tbh-check"><input id="tbh-mvbtn" type="checkbox"> Show the "Show above MV" button</label>
+        </details>
+
         <div class="tbh-actions">
           <button type="button" class="tbh-btn tbh-secondary" id="tbh-cancel">Cancel</button>
           <button type="button" class="tbh-btn" id="tbh-save">Save</button>
         </div>
+        <div class="tbh-credit">Created by <a href="https://www.torn.com/profiles.php?XID=4501067" target="_blank" rel="noopener">xDevil2 [4501067]</a></div>
       </div>`;
     document.body.appendChild(backdrop);
 
@@ -610,13 +747,13 @@
     $('tbh-undercut').value = s.undercut;
     $('tbh-unit').value = s.undercutUnit;
     $('tbh-mode').value = s.mode;
-    $('tbh-min').value = s.clusterMinListings;
     $('tbh-tol').value = s.clusterTolerance;
     $('tbh-units').value = s.clusterMinUnits;
     $('tbh-npc').checked = s.warnNpc;
     $('tbh-drop').value = s.dropWarnPercent;
     $('tbh-cache').value = s.cacheMinutes;
     $('tbh-calls').value = s.maxCallsPerMinute;
+    $('tbh-mvbtn').checked = s.showMvButton;
 
     const syncCluster = () => ($('tbh-cluster').style.display = $('tbh-mode').value === 'cluster' ? '' : 'none');
     $('tbh-mode').addEventListener('change', syncCluster);
@@ -635,15 +772,17 @@
         undercut: num('tbh-undercut', DEFAULTS.undercut),
         undercutUnit: $('tbh-unit').value,
         mode: $('tbh-mode').value,
-        clusterMinListings: Math.max(2, Math.round(num('tbh-min', DEFAULTS.clusterMinListings))),
         clusterTolerance: num('tbh-tol', DEFAULTS.clusterTolerance),
-        clusterMinUnits: Math.round(num('tbh-units', DEFAULTS.clusterMinUnits)),
+        clusterMinUnits: Math.max(1, Math.round(num('tbh-units', DEFAULTS.clusterMinUnits))),
         warnNpc: $('tbh-npc').checked,
         dropWarnPercent: Math.min(100, num('tbh-drop', DEFAULTS.dropWarnPercent)),
         cacheMinutes: Math.round(num('tbh-cache', DEFAULTS.cacheMinutes)),
+        showMvButton: $('tbh-mvbtn').checked,
         maxCallsPerMinute: Math.min(100, Math.max(1, Math.round(num('tbh-calls', DEFAULTS.maxCallsPerMinute)))),
       };
       saveSettings(settings);
+      if (!settings.showMvButton && mvShown) hideAboveMarketValue(mvBtn);
+      queueScan();
       updateLimitBanner();
       close();
       toast('Settings saved');
@@ -664,7 +803,11 @@
     (b, e) => updateAllPrices(b, e.shiftKey)
   );
   allBtn.style.display = 'none';
-  dock.append(gear, allBtn);
+  const mvBtn = makeButton(MV_SHOW, 'Colour in blue every price that is above the item\'s market value; click again to remove the colour', (b) =>
+    showAboveMarketValue(b)
+  );
+  mvBtn.style.display = 'none';
+  dock.append(gear, allBtn, mvBtn);
   document.body.appendChild(dock);
 
   updateLimitBanner();
@@ -680,7 +823,12 @@
     });
   };
   new MutationObserver(queueScan).observe(document.body, { childList: true, subtree: true });
-  window.addEventListener('hashchange', queueScan);
+  window.addEventListener('hashchange', () => {
+    // A different bazaar page: the remembered colours no longer apply.
+    marks.clear();
+    if (mvShown) hideAboveMarketValue(mvBtn);
+    queueScan();
+  });
   document.addEventListener('focusin', (e) => {
     if (e.target instanceof HTMLInputElement && e.target.matches(PRICE_INPUT)) e.target.dataset.tbhPrev = parsePrice(e.target);
   });

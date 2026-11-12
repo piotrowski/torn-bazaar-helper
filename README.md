@@ -9,7 +9,8 @@ Created by **xDevil2 [4501067]** ([profile](https://www.torn.com/profiles.php?XI
 - **Max** button next to the quantity box on Add Items: fills in everything you own of that item.
 - **$** button in every price field (Add Items and Manage Items): looks up the Item Market and fills in a price just below the competition.
 - **Update all prices** button on Manage Items: reprices every item on the page in one go.
-- **Two pricing modes:** undercut the single lowest listing, or undercut the lowest *cluster* of listings so one lone cheap offer doesn't drag your price down.
+- **Two pricing modes:** undercut the single lowest price, or undercut the lowest *cluster*: the first price with a meaningful number of items for sale, so a handful of cheap items doesn't drag your price down.
+- **Show above MV** button: colours in blue every price that is above the item's Torn market value.
 - **NPC shop warning:** refuses to set a price below what NPC shops pay for the item, and warns if you type one by hand.
 - **Big drop warning:** flags a new price that is much lower than the one it replaces.
 - **Remembers prices** for a configurable time, so repeated clicks don't spend API calls.
@@ -31,41 +32,54 @@ Create a key in Torn under **Settings → API Keys**. A **Public** access key is
 
 ## Using it
 
+The script adds a row of buttons to the bottom-left corner of the bazaar page:
+
+![The Bazaar Helper, Update all prices and Show above MV buttons](readme/Buttons.png)
+
 | Page | Button | What happens |
 |---|---|---|
 | Add Items | **Max** | Fills the quantity with everything you own (ticks the box for single items). |
 | Add Items, Manage Items | **$** | Fetches market listings and fills in the price. Shift+click ignores remembered prices and fetches fresh ones. |
+| Add Items, Manage Items | **Show above MV** | Colours in blue every filled-in price that is above the item's market value. Hover a price to see the market value and how far above or below it you are. Click again (**Hide above MV**) to remove the blue. |
 | Manage Items | **Update all prices** | Prices every item on the page one after another, showing progress. Click again to stop. Shift+click forces fresh prices. |
 
-After each **$** click a short message shows the reference price and the price that was set, for example `$868,000 (cluster of 14 listings, 950 items) → $867,999`. A field outlined in red means a warning applies to it.
+After each **$** click a short message shows the reference price and the price that was set, for example `$868,000 (cluster of 950 items) → $867,999`. A field outlined in red means a warning applies to it.
 
-**Update all prices** only sees the rows that are loaded on the page when you click. If your bazaar list loads more rows as you scroll, scroll to the bottom first. The summary at the end reports how many prices were updated, flagged, or skipped.
+**Update all prices** only sees the rows that are loaded on the page when you click. If your bazaar list loads more rows as you scroll, scroll to the bottom first. The summary at the end reports how many prices were updated, flagged, or skipped, and stays on screen until you click it.
+
+![Manage Items after a mass price update, with green and orange price fields and the summary message](readme/MassPriceUpdate.png)
+
+After a **$** click or a mass update, fields are coloured by what happened: light green where the price went up, light orange where it went down, and a red outline where it dropped by your warning percentage or more, or was not priced because NPC shops pay more.
 
 ## Settings
 
 Open them with the **⚙ Bazaar Helper** button or from the Tampermonkey menu.
 
+![The settings window with Advanced settings open](readme/Settings.png)
+
 | Setting | Default | Meaning |
 |---|---|---|
 | API key | (empty) | Your Torn API key. |
 | Undercut by | $1 | How far below the reference price to go, as a dollar amount or a percentage. |
-| Reference price | Lowest listing | **Lowest listing**, or **Lowest cluster of listings**. |
-| Cluster: at least this many listings | 3 | How many listings make a cluster. |
-| Cluster: or at least this many items in total | 15 | A group holding this many items is also a cluster, even if it is a single offer. 0 counts listings only. |
-| Cluster: within this % of each other | 2 | How close together those listings must be, measured from the cheapest one in the group. |
+| Reference price | Lowest price | **Lowest price**, or **Lowest cluster of items**. |
+| Cluster: at least this many items | 15 | How many items must be for sale around one price for it to count as a cluster. |
+| Cluster: priced within this % of each other | 2 | How close together those items must be priced, measured from the cheapest one in the group. |
 | Warn when a price is below the NPC shop price | on | See "Warnings" below. |
 | Warn when a new price is lower by at least (%) | 20 | Compared with the price already in the field. 0 turns it off. |
 | Remember fetched prices for (minutes) | 30 | How long market prices are reused. 0 fetches every time. |
+| Show the "Show above MV" button | on | Turn off to remove that button from the page. |
 | API calls per minute, at most | 20 | This script's share of Torn's limit of 100 calls per minute. |
 
 ## How the price is chosen
 
 Prices come from the **Item Market** through the official Torn API. The API does not expose other players' bazaar listings, so those are not considered.
 
-- **Lowest listing:** the reference price is the cheapest listing.
-- **Lowest cluster:** starting from the cheapest listing, the script looks for the first price where the listings within *X%* of it add up to at least *N* listings, or at least *M* items in total. That price is the reference. If no such group exists, it falls back to the cheapest listing.
+The API's market data is a shared snapshot that Torn refreshes about once an hour, so prices can lag the live market by an hour or more. The message after each **$** click shows how old the data is; check fast-moving items by hand.
 
-  Example with 3 listings or 15 items within 5%: for listings of 800 (x12), 990 (x253), 990 (x3), 994 (x11) the lone 800 holds only 12 items, so it is skipped and the reference is 990. Had it held 18 items, it would count as a real price level and the reference would be 800.
+- **Lowest price:** the reference price is the cheapest one on the market.
+- **Lowest cluster of items:** starting from the cheapest price, the script looks for the first price where the items for sale within *X%* of it add up to at least *N* items. That price is the reference. If no such group exists, it falls back to the cheapest price.
+
+  Example with 15 items within 5%: with 12 items at 800, 253 at 990 and 11 at 994, the 12 items at 800 are too few, so they are skipped and the reference is 990. Had there been 18 items at 800, the reference would be 800.
 
 The undercut is then subtracted from the reference price. The result is rounded down and never goes below $1.
 
@@ -86,18 +100,17 @@ Torn allows scripts that display information and fill in fields, and forbids scr
 - **No ⚙ Bazaar Helper button:** the script is not running. Check that it is enabled in Tampermonkey and that "Allow user scripts" is on, then reload.
 - **Settings button shows, but no Max / $ buttons:** Torn's page layout may have changed. Please report it with the HTML of one item row.
 - **"API error: …":** the message comes from Torn, usually a wrong or deleted key.
-- **A price looks out of date:** it may be a remembered price (the message says "price from N min ago"). Shift+click the **$** button to refresh.
+- **A price looks out of date:** Torn's API refreshes its Item Market data only about once an hour, so offers posted since then are invisible to the script. Every message ends with the age of the data ("market data from 69 min ago"). If the script is also reusing a remembered price, Shift+click the **$** button to fetch again.
 
 ## Development and tests
 
 The whole script is the single file `bazaar-helper.user.js`. The tests need Node.js 18 or newer and `make`; there are no other dependencies.
 
 ```
-make test                     # run the tests, then print a price table (3 listings or 15 items within 5%)
-make test SIZE=4 PCT=1.5      # the same with your own cluster size and percentage
-make test UNITS=50            # a cluster can also be 50 items in total (UNITS=0 counts listings only)
+make test                     # run the tests, then print a price table (cluster of 15 items within 5%)
+make test UNITS=50 PCT=1.5    # the same with your own cluster size (items) and percentage
 make test UNDERCUT=2 UNIT=%   # undercut by 2% instead of $1
-make table SIZE=5 PCT=1       # only the table
+make table UNITS=30 PCT=1     # only the table
 make fetch KEY=yourPublicKey ITEMS="206 274"   # save fresh market listings as fixtures
 ```
 

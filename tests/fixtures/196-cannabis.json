@@ -214,34 +214,46 @@
         "undercutUnit": "$",
         "mode": "lowest",
         "clusterTolerance": 2,
-        "clusterMinListings": 3
+        "clusterMinUnits": 15
       },
       "expected": 10399,
       "note": "lowest"
     },
     {
-      "name": "cluster 3 within 2%, $1 under",
+      "name": "cluster of 15 items within 2%, $1 under",
       "settings": {
         "undercut": 1,
         "undercutUnit": "$",
         "mode": "cluster",
         "clusterTolerance": 2,
-        "clusterMinListings": 3
+        "clusterMinUnits": 15
       },
-      "expected": 10998,
-      "note": "cluster of 6"
+      "expected": 10399,
+      "note": "cluster of 265 items"
     },
     {
-      "name": "cluster 3 within 5%, $1 under",
+      "name": "cluster of 15 items within 5%, $1 under",
       "settings": {
         "undercut": 1,
         "undercutUnit": "$",
         "mode": "cluster",
         "clusterTolerance": 5,
-        "clusterMinListings": 3
+        "clusterMinUnits": 15
       },
-      "expected": 10998,
-      "note": "cluster of 7"
+      "expected": 10399,
+      "note": "cluster of 265 items"
+    },
+    {
+      "name": "cluster of 50 items within 5%, $1 under",
+      "settings": {
+        "undercut": 1,
+        "undercutUnit": "$",
+        "mode": "cluster",
+        "clusterTolerance": 5,
+        "clusterMinUnits": 50
+      },
+      "expected": 10399,
+      "note": "cluster of 265 items"
     }
   ]
 }

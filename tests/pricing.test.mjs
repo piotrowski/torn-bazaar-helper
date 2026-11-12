@@ -15,28 +15,16 @@ const CASES = [
   ['never goes below $1', [1, 5], { undercut: 10 }, 1],
   ['unsorted input is handled', [845000, 839000, 839500], {}, 838999],
 
-  ['cluster skips a lone cheap listing', [11800, 12950, 12990, 13000, 13000], { mode: 'cluster' }, 12949],
-  ['cluster at the very bottom is used', [100, 101, 102, 500], { mode: 'cluster' }, 99],
-  ['cluster needs the configured number of listings', [100, 101, 500, 501, 502, 503], { mode: 'cluster', clusterMinListings: 4 }, 499],
-  ['cluster tolerance is measured from its lowest listing', [100, 104, 108, 200], { mode: 'cluster', clusterTolerance: 5 }, 99],
-  ['no cluster falls back to the lowest listing', [100, 200, 300], { mode: 'cluster' }, 99],
-  [
-    'reported case: no 3 listings within 5%, falls back to lowest',
-    [14021, 15340, 15345, 1630, 16300, 16369],
-    { mode: 'cluster', clusterTolerance: 5, clusterMinListings: 3 },
-    1629,
-  ],
-
-  // item-count rule: enough items in total also makes a cluster
-  ['one big offer counts as a cluster', [{ price: 5000, amount: 18 }, 5850, 5850, 5850], { mode: 'cluster', clusterMinUnits: 15 }, 4999],
-  ['a thin lone offer is still skipped', [{ price: 800, amount: 12 }, 990, 990, 994], { mode: 'cluster', clusterMinUnits: 15 }, 989],
-  [
-    'items are summed across offers within the tolerance',
-    [{ price: 100, amount: 8 }, { price: 101, amount: 8 }, 500, 501, 502],
-    { mode: 'cluster', clusterMinUnits: 15 },
-    99,
-  ],
-  ['item count of 0 means listings only', [{ price: 5000, amount: 999 }, 5850, 5850, 5850], { mode: 'cluster', clusterMinUnits: 0 }, 5849],
+  // cluster mode: enough items for sale around one price (default 15 items within 2%)
+  ['cluster skips a thin cheap offer', [{ price: 800, amount: 12 }, { price: 990, amount: 253 }, 994], { mode: 'cluster' }, 989],
+  ['one big offer is a cluster on its own', [{ price: 5000, amount: 18 }, { price: 5850, amount: 114 }], { mode: 'cluster' }, 4999],
+  ['items are summed across nearby prices', [{ price: 100, amount: 8 }, { price: 101, amount: 8 }, { price: 500, amount: 99 }], { mode: 'cluster' }, 99],
+  ['prices outside the tolerance are not summed', [{ price: 100, amount: 8 }, { price: 110, amount: 8 }, { price: 500, amount: 99 }], { mode: 'cluster' }, 499],
+  ['a wider tolerance joins nearby prices', [{ price: 100, amount: 8 }, { price: 104, amount: 8 }, { price: 200, amount: 99 }], { mode: 'cluster', clusterTolerance: 5 }, 99],
+  ['a narrow tolerance keeps them apart', [{ price: 100, amount: 8 }, { price: 104, amount: 8 }, { price: 200, amount: 99 }], { mode: 'cluster', clusterTolerance: 2 }, 199],
+  ['cluster size is configurable', [{ price: 100, amount: 20 }, { price: 500, amount: 60 }], { mode: 'cluster', clusterMinUnits: 50 }, 499],
+  ['many single items do not make a cluster', [100, 100, 100, { price: 500, amount: 40 }], { mode: 'cluster' }, 499],
+  ['no cluster falls back to the lowest price', [100, 200, 300], { mode: 'cluster' }, 99],
 ];
 
 for (const [name, listings, settings, expected] of CASES) {
@@ -47,10 +35,9 @@ test('no listings is an error', () => {
   assert.throws(() => computePrice([], DEFAULT_SETTINGS), /No item market listings/);
 });
 
-test('Stingray Plushie snapshot: the 18 items at $5,000 count as a cluster', () => {
+test('Stingray Plushie snapshot: the 18 items at $5,000 are a cluster', () => {
   const fx = JSON.parse(readFileSync(new URL('./fixtures/618-stingray-plushie.json', import.meta.url), 'utf8'));
-  const s = { mode: 'cluster', clusterMinListings: 3, clusterMinUnits: 15, clusterTolerance: 5 };
-  assert.equal(price(fx.listings, s), 4999);
+  assert.equal(price(fx.listings, { mode: 'cluster', clusterMinUnits: 15, clusterTolerance: 5 }), 4999);
 });
 
 // ---- real item market snapshots saved by tests/fetch-market.mjs ----

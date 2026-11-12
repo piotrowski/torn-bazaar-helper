@@ -13,8 +13,7 @@ export const DEFAULT_SETTINGS = {
   undercutUnit: '$',
   mode: 'lowest',
   clusterTolerance: 2,
-  clusterMinListings: 3,
-  clusterMinUnits: 0, // tests opt in to the item-count rule explicitly
+  clusterMinUnits: 15,
 };
 
 // Accepts plain prices or { price, amount } and returns sorted listings.

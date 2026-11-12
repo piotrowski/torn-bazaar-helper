@@ -18,9 +18,9 @@ if (!key || !ids.length) {
 
 const CASE_SETTINGS = [
   ['lowest, $1 under', { mode: 'lowest' }],
-  ['cluster 3 within 2%, $1 under', { mode: 'cluster', clusterMinListings: 3, clusterTolerance: 2 }],
-  ['cluster 3 within 5%, $1 under', { mode: 'cluster', clusterMinListings: 3, clusterTolerance: 5 }],
-  ['cluster 3 or 15 items within 5%, $1 under', { mode: 'cluster', clusterMinListings: 3, clusterMinUnits: 15, clusterTolerance: 5 }],
+  ['cluster of 15 items within 2%, $1 under', { mode: 'cluster', clusterMinUnits: 15, clusterTolerance: 2 }],
+  ['cluster of 15 items within 5%, $1 under', { mode: 'cluster', clusterMinUnits: 15, clusterTolerance: 5 }],
+  ['cluster of 50 items within 5%, $1 under', { mode: 'cluster', clusterMinUnits: 50, clusterTolerance: 5 }],
 ];
 
 const fmt = (n) => '$' + n.toLocaleString('en-US');
