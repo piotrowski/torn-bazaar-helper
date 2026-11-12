@@ -119,6 +119,10 @@ make fetch KEY=yourPublicKey ITEMS="206 274"   # save fresh market listings as f
 - `make fetch` saves real Item Market listings for the given item IDs. The expected prices it writes are whatever the script computes at that moment, so review them: they record current behaviour, not proven-correct prices.
 - The table shows, for every saved item, the cheapest listings and the price the script would set in both modes.
 
+## Licence
+
+Released under the [GNU General Public License v3.0](LICENSE). You may use, modify and redistribute the script, provided that versions you share stay open source under the same licence.
+
 ## Author and donations
 
 Created by **xDevil2 [4501067]**.

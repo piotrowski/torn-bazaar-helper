@@ -1,8 +1,12 @@
 // ==UserScript==
 // @name         Torn Bazaar Helper
 // @namespace    torn-bazaar-helper
-// @version      1.0.0
+// @version      1.1.0
 // @description  One-click max quantity and auto-pricing for the bazaar Add Items / Manage Items pages.
+// @author       xDevil2 [4501067]
+// @license      GPL-3.0-only
+// @homepageURL  https://github.com/piotrowski/torn-bazaar-helper
+// @supportURL   https://github.com/piotrowski/torn-bazaar-helper/issues
 // @match        https://www.torn.com/bazaar.php*
 // @grant        GM_getValue
 // @grant        GM_setValue
